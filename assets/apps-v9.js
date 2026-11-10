@@ -1,0 +1,40 @@
+
+(() => {"use strict";
+const $=id=>document.getElementById(id);const panes=[...document.querySelectorAll('.app-pane')],buttons=[...document.querySelectorAll('button[data-app]')];
+function select(app){if(!panes.some(p=>p.id==='app-'+app))app='calculator';panes.forEach(p=>p.classList.toggle('hidden',p.id!=='app-'+app));buttons.forEach(b=>b.classList.toggle('active',b.dataset.app===app));(()=>{try{history.replaceState(null,'','#'+app)}catch(e){}})()}buttons.forEach(b=>b.addEventListener('click',()=>select(b.dataset.app)));select(location.hash.slice(1));window.addEventListener('hashchange',()=>select(location.hash.slice(1)));
+// Recursive-descent parser; never uses eval or Function.
+function calcExpression(input){const s=input.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-').replace(/\s/g,'');let i=0;function number(){if(s[i]==='('){i++;const v=expr();if(s[i++]!==')')throw Error('括号不匹配');return v}const m=s.slice(i).match(/^(?:\d+\.?\d*|\.\d+)/);if(!m)throw Error('表达式不完整');i+=m[0].length;return Number(m[0])}function unary(){if(s[i]==='-'){i++;return -unary()}if(s[i]==='+'){i++;return unary()}return number()}function term(){let v=unary();while(s[i]==='*'||s[i]==='/'){let op=s[i++],n=unary();if(op==='/'&&n===0)throw Error('不能除以零');v=op==='*'?v*n:v/n}return v}function expr(){let v=term();while(s[i]==='+'||s[i]==='-'){let op=s[i++],n=term();v=op==='+'?v+n:v-n}return v}if(!s)throw Error('请输入算式');let out=expr();if(i!==s.length||!Number.isFinite(out))throw Error('表达式无效');return Number(out.toPrecision(12))}
+let expr='';const keys=['C','(',')','⌫','7','8','9','÷','4','5','6','×','1','2','3','−','0','.','=','+'];$('calc-keys').innerHTML=keys.map(k=>`<button type="button" data-key="${k}" aria-label="${k}">${k}</button>`).join('');$('calc-keys').addEventListener('click',e=>{let b=e.target.closest('[data-key]');if(!b)return;let k=b.dataset.key;if(k==='C')expr='';else if(k==='⌫')expr=expr.slice(0,-1);else if(k==='='){try{const value=calcExpression(expr);$('calc-history').textContent=expr+' = '+value;expr=String(value)}catch(e){$('calc-history').textContent=e.message;return}}else expr+=k;$('calc-display').textContent=expr||'0'});
+// Timer uses elapsed wall time, not an accumulated interval counter.
+let duration=25*60,remaining=duration,deadline=0,timer=null;function timerView(){const m=String(Math.floor(remaining/60)).padStart(2,'0'),s=String(Math.floor(remaining%60)).padStart(2,'0');$('time-display').textContent=m+':'+s;$('timer-ring').style.setProperty('--pct',(100*remaining/duration)+'%')};function stop(){if(timer)clearInterval(timer);timer=null;$('timer-go').textContent='开始'}function tick(){remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));timerView();if(remaining===0){stop();$('timer-msg').textContent='倒计时完成！'}}function start(){if(timer){remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));stop();return}if(!remaining)remaining=duration;deadline=Date.now()+remaining*1000;timer=setInterval(tick,200);$('timer-go').textContent='暂停';$('timer-msg').textContent=''}$('timer-go').addEventListener('click',start);$('timer-reset').addEventListener('click',()=>{stop();remaining=duration;timerView();$('timer-msg').textContent='已重置'});document.querySelectorAll('[data-duration]').forEach(b=>b.addEventListener('click',()=>{duration=Number(b.dataset.duration)*60;remaining=duration;stop();timerView();$('timer-msg').textContent='已选择 '+b.dataset.duration+' 分钟'}));timerView();
+// Notes persist locally only.
+const noteKey='keji_portfolio_note_v1';try{let obj=JSON.parse(localStorage.getItem(noteKey)||'{}');$('note-title').value=obj.title||'';$('note-body').value=obj.body||''}catch{}function saveNote(){const title=$('note-title').value,body=$('note-body').value;try{localStorage.setItem(noteKey,JSON.stringify({title,body}))}catch{}$('note-status').textContent='本地已保存 · '+body.length+' 字'}['note-title','note-body'].forEach(id=>$(id).addEventListener('input',saveNote));$('note-download').addEventListener('click',()=>download(($('note-title').value||'我的便签')+'\n\n'+$('note-body').value,'notes.txt'));$('note-clear').addEventListener('click',()=>{$('note-title').value='';$('note-body').value='';saveNote()});saveNote();
+function download(content,name){const blob=new Blob([content],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),300)}
+// Draw uses cryptographic RNG for unbiased weighted selection; no purchases.
+const pool=[{name:'星河使者',rarity:'传说',w:4},{name:'幻影骑士',rarity:'史诗',w:16},{name:'青岚游侠',rarity:'稀有',w:30},{name:'晨曦守卫',rarity:'普通',w:50}];let pulls=0,legendaries=0,highest='—';function draw(){let v=crypto.getRandomValues(new Uint32Array(1))[0]/4294967296*100;const c=pool.find(x=>(v-=x.w)<0)||pool.at(-1);pulls++;if(c.rarity==='传说')legendaries++;const rank={'—':0,'普通':1,'稀有':2,'史诗':3,'传说':4};if(rank[c.rarity]>rank[highest])highest=c.rarity;return c}function drawBatch(n){const res=Array.from({length:n},draw);$('draw-count').textContent=pulls;$('draw-legendary').textContent=legendaries;$('draw-rarity').textContent=highest;$('draw-results').innerHTML=res.map((c,i)=>`<div class="draw-card"><div><h3>${c.name}</h3><p>${c.rarity} · 第 ${pulls-n+i+1} 次</p></div><span class="draw-rarity">${c.rarity}</span></div>`).join('')} $('draw-one').onclick=()=>drawBatch(1);$('draw-ten').onclick=()=>drawBatch(10);$('draw-reset').onclick=()=>{pulls=legendaries=0;highest='—';$('draw-count').textContent='0';$('draw-legendary').textContent='0';$('draw-rarity').textContent='—';$('draw-results').innerHTML='<p class="muted">记录已重置。</p>'};
+// Text processor transforms user input; no data leaves device.
+function cleanText(){const before=$('text-input').value.split(/\r?\n/);let seen=new Set();let after=before.map(s=>s.trim()).filter(s=>s&&!seen.has(s)&&seen.add(s));const out=after.join('\n');$('text-output').value=out;let kw=$('text-keyword').value;let count=kw?out.split(kw).length-1:0;$('text-stats').textContent=`输入 ${before.length} 行 → 输出 ${after.length} 行 · 去除 ${before.length-after.length} 个空行/重复行`+(kw?` · “${kw}”出现 ${count} 次`:'');return out}$('text-clean').onclick=cleanText;$('text-keyword').addEventListener('input',()=>{if($('text-output').value)cleanText()});$('text-copy').onclick=async()=>{try{await navigator.clipboard.writeText($('text-output').value);$('text-stats').textContent+=' · 已复制'}catch{$('text-stats').textContent+=' · 可手动复制'}};$('text-download').onclick=()=>download($('text-output').value||cleanText(),'cleaned.txt');
+// Keyboard input complements the visible calculator keys.
+document.addEventListener('keydown', event => {
+ if (location.hash !== '#calculator' && location.hash !== '') return;
+ const target=event.target;
+ if (target && (['INPUT','TEXTAREA','SELECT'].includes(target.tagName) || target.isContentEditable)) return;
+ const keymap={'*':'×','/':'÷','-':'−','Enter':'=','Backspace':'⌫','Escape':'C'};
+ const key=keymap[event.key]||event.key;
+ if (/^[0-9.()+]$/.test(key)||['×','÷','−','=','⌫','C'].includes(key)){
+  const btn=[...document.querySelectorAll('#calc-keys button')].find(b=>b.dataset.key===key);
+  if(btn){event.preventDefault();btn.click();}
+ }
+});
+// Allow a custom timer duration in the range 1–180 minutes.
+$('custom-go').addEventListener('click',()=>{
+ const n=Number($('custom-min').value);
+ if(!Number.isInteger(n)||n<1||n>180){$('timer-msg').textContent='请输入 1–180 之间的整数分钟数';return}
+ duration=n*60;remaining=duration;stop();timerView();$('timer-msg').textContent='已设置 '+n+' 分钟';
+});
+// Provide an explicit reset for text cleaning.
+$('text-clear').addEventListener('click',()=>{
+ $('text-input').value='';$('text-output').value='';$('text-keyword').value='';$('text-stats').textContent='已清空';
+});
+
+})();
