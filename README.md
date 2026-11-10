@@ -1,44 +1,31 @@
-# Keji Yin · Python & Data Projects
+# Keji Yin — Portfolio
 
-**Portfolio:** https://keji7-prog.github.io/
+Public website: **https://keji7-prog.github.io/**
 
-A collection of data applications, Python scripts, and working browser utilities.
+A focused portfolio of Python, data analysis, browser-based data collection, and working software tools. The website is hosted by GitHub Pages and runs without a server-side backend.
 
-## Featured projects
+## Structure
 
-| Project | Open |
-|---|---|
-| Open Source Data Explorer | [Interactive dashboard](https://keji7-prog.github.io/opensource.html) |
-| CSV Data Explorer | [Analyze a CSV](https://keji7-prog.github.io/demos/csv-lab.html) |
-| Tkinter Calculator | [Application overview](https://keji7-prog.github.io/desktop.html) |
-| Browser utilities | [Calculator, timer, notes, random cards, text processing](https://keji7-prog.github.io/lab.html) |
-| Python implementations | [Project source browser](https://keji7-prog.github.io/code.html) |
+- `index.html` — personal introduction and filterable project gallery
+- `content.js` — public profile copy, project order, destinations, and tags
+- `script.js` — card rendering, filters, mobile navigation, scroll progress, and theme toggle
+- `style.css` — responsive typography, layouts, and project preview illustrations
+- `housing-case.html` — public, aggregated results of a verified local collection run
+- `projects/housing_analysis.py` — reproducible Pandas analysis script (requires the private CSV as input)
+- `assets/housing_summary.json` — non-identifying aggregate metrics used for the public case
+
+Existing project applications remain available under `opensource.html`, `desktop.html`, `demos/csv-lab.html`, and `lab.html`.
+
+## Public / private separation
+
+The site lists selected public project results. The detailed Beijing housing CSV and Excel stay in the separate private repository `beike-housing-project`; those raw files are **not** deployed on the public website. The public case displays only aggregate statistics from the November 10, 2026 collection run.
 
 ## Data
 
-The open-source dashboard uses a dated snapshot of metadata obtained from the [GitHub REST API](https://docs.github.com/en/rest/repos/repos#get-a-repository). The snapshot includes twelve named public repositories, original URLs and independently checkable metrics. Figures are snapshot observations, not live measurements.
+GitHub repository metrics come from the GitHub REST API and are presented as a dated snapshot, not a live feed. The source collection and analysis scripts are available in this repository.
 
-- Snapshot: `data/github_repos_snapshot.json`
-- Python API collector: `scripts/collect_github_repos.py`
-- Python analysis: `scripts/analyze_github_repos.py`
-- Derived metrics: `data/github_repos_analysis.json`
+## Updates
 
-## Private data project
+Edit the `projects` array in `content.js` to change project order, labels, or targets. Use the existing project URLs to avoid broken links.
 
-The Beijing housing-listing collection is stored separately in `keji7-prog/beike-housing-project`, a **private repository**. That project contains the actual local browser collection output, CSV and Excel files, and its analysis application. Access requires the owner's authorization. No listing-level data from that repository are published by this website.
-
-## Software
-
-The deployed website is built with standard HTML, CSS and JavaScript, hosted on GitHub Pages. Tkinter source code can be run in a compatible Python desktop environment; the public site shows the application and recorded results rather than embedding a Windows executable.
-
-## Repository layout
-
-- `index.html` — portfolio and project navigation
-- `opensource.html` — public repository data analysis
-- `demos/csv-lab.html` — browser CSV analysis
-- `lab.html` — interactive browser tools
-- `desktop.html` — Python desktop application
-- `code.html` — selected project source files
-- `scripts/` — data-processing and desktop application programs
-
-Copyright © 2026 Keji Yin. External repositories, datasets and dependencies remain subject to their respective licenses and terms.
+© 2026 Keji Yin. Third-party data and applications remain subject to their source licensing and terms.
