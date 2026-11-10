@@ -1,0 +1,61 @@
+{
+  "source": "https://bj.ke.com/ershoufang/",
+  "collected_at": "2026-11-10T13:17:15+08:00",
+  "records": 30,
+  "unique_urls": 30,
+  "median_total_wan": 425.0,
+  "median_area_sqm": 88.31,
+  "median_unit_yuan": 56537,
+  "groups": [
+    {
+      "room": "1室",
+      "records": 6,
+      "median_price_wan": 380.0,
+      "median_area_sqm": 48.78,
+      "median_unit_yuan": 69593
+    },
+    {
+      "room": "2室",
+      "records": 14,
+      "median_price_wan": 427.5,
+      "median_area_sqm": 82.49,
+      "median_unit_yuan": 54784
+    },
+    {
+      "room": "3室",
+      "records": 9,
+      "median_price_wan": 585.0,
+      "median_area_sqm": 129.77,
+      "median_unit_yuan": 45080
+    },
+    {
+      "room": "4室",
+      "records": 1,
+      "median_price_wan": 632.0,
+      "median_area_sqm": 186.76,
+      "median_unit_yuan": 33841
+    }
+  ],
+  "price_bands": [
+    {
+      "label": "低于200万",
+      "count": 4
+    },
+    {
+      "label": "200–400万",
+      "count": 10
+    },
+    {
+      "label": "400–600万",
+      "count": 8
+    },
+    {
+      "label": "600–1000万",
+      "count": 4
+    },
+    {
+      "label": "1000万及以上",
+      "count": 4
+    }
+  ]
+}
