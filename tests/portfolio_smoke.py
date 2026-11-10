@@ -65,6 +65,8 @@ with sync_playwright() as p:
  page.locator('#csv-next').click();check(page.locator('#csv-rows').inner_text().startswith('51'),'pagination second page')
  with page.expect_download() as d:page.locator('#csv-export').click()
  check('filtered' in d.value.suggested_filename,'CSV export')
+ with page.expect_download() as report_download:page.locator('#csv-report').click()
+ check(report_download.value.suggested_filename=='csv-quality-report.json','quality JSON export')
  page.close()
 
  page=setup(b,'desktop.html',['assets/desktop-v13.js'],{'data/verified_calculator_checks.json':tests})
