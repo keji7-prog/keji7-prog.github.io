@@ -2,18 +2,139 @@
   "source": "https://api.github.com/repos/{owner}/{repo}",
   "collected_on": "2026-11-10",
   "selection": "12 selected public repositories relevant to Python, data, web development, and automation",
+  "provenance": "Read directly from GitHub's official repository REST API on the stated date; these are dated observations, not live metrics.",
   "records": [
-    {"repo":"python/cpython","description":"The Python programming language","stars":78142,"forks":36531,"issues":9275,"language":"Python","created_at":"2017-02-10T19:23:51Z","pushed_at":"2026-11-10T00:35:37Z","category":"语言与基础"},
-    {"repo":"pandas-dev/pandas","description":"Flexible and powerful data analysis / manipulation library for Python","stars":50560,"forks":20736,"issues":1908,"language":"Python","created_at":"2010-08-24T01:37:33Z","pushed_at":"2026-11-10T00:00:02Z","category":"数据分析"},
-    {"repo":"numpy/numpy","description":"The fundamental package for scientific computing with Python.","stars":33413,"forks":13106,"issues":2244,"language":"Python","created_at":"2010-09-13T23:02:39Z","pushed_at":"2026-11-10T01:28:55Z","category":"数据分析"},
-    {"repo":"scikit-learn/scikit-learn","description":"scikit-learn: machine learning in Python","stars":68122,"forks":27661,"issues":2165,"language":"Python","created_at":"2010-08-17T09:43:38Z","pushed_at":"2026-11-10T03:58:32Z","category":"数据分析"},
-    {"repo":"psf/requests","description":"A simple, yet elegant, HTTP library.","stars":54747,"forks":10759,"issues":251,"language":"Python","created_at":"2011-02-13T18:38:17Z","pushed_at":"2026-11-02T16:55:12Z","category":"网络与采集"},
-    {"repo":"pallets/flask","description":"The Python micro framework for building web applications.","stars":75085,"forks":17289,"issues":4,"language":"Python","created_at":"2010-04-06T11:11:59Z","pushed_at":"2026-10-30T15:05:22Z","category":"Web 开发"},
-    {"repo":"django/django","description":"The Web framework for perfectionists with deadlines.","stars":91702,"forks":35211,"issues":535,"language":"Python","created_at":"2012-04-28T02:47:18Z","pushed_at":"2026-11-09T09:19:25Z","category":"Web 开发"},
-    {"repo":"fastapi/fastapi","description":"FastAPI framework, high performance, easy to learn, fast to code, ready for production","stars":104602,"forks":10207,"issues":60,"language":"Python","created_at":"2018-12-08T08:21:47Z","pushed_at":"2026-11-09T20:01:16Z","category":"Web 开发"},
-    {"repo":"scrapy/scrapy","description":"Scrapy, a fast high-level web crawling & scraping framework for Python.","stars":65302,"forks":12113,"issues":182,"language":"Python","created_at":"2010-02-22T02:01:14Z","pushed_at":"2026-11-09T15:10:50Z","category":"网络与采集"},
-    {"repo":"SeleniumHQ/selenium","description":"A browser automation framework and ecosystem.","stars":34579,"forks":8725,"issues":192,"language":"Java","created_at":"2013-01-14T21:40:56Z","pushed_at":"2026-11-10T00:35:29Z","category":"自动化"},
-    {"repo":"microsoft/playwright-python","description":"Python version of the Playwright testing and automation library.","stars":15093,"forks":1257,"issues":0,"language":"Python","created_at":"2020-07-01T15:28:13Z","pushed_at":"2026-11-10T03:43:50Z","category":"自动化"},
-    {"repo":"encode/httpx","description":"A next generation HTTP client for Python.","stars":15764,"forks":1859,"issues":140,"language":"Python","created_at":"2019-04-04T12:27:00Z","pushed_at":"2026-10-02T12:53:43Z","category":"网络与采集"}
+    {
+      "repo": "python/cpython",
+      "description": "The Python programming language",
+      "stars": 78153,
+      "forks": 36540,
+      "issues": 9278,
+      "language": "Python",
+      "created_at": "2017-02-10T19:23:51Z",
+      "pushed_at": "2026-11-10T11:28:27Z",
+      "category": "语言与基础"
+    },
+    {
+      "repo": "pandas-dev/pandas",
+      "description": "Flexible and powerful data analysis / manipulation library for Python, providing labeled data structures similar to R data.frame objects, statistical functions, and much more",
+      "stars": 50565,
+      "forks": 20739,
+      "issues": 1916,
+      "language": "Python",
+      "created_at": "2010-08-24T01:37:33Z",
+      "pushed_at": "2026-11-10T04:29:50Z",
+      "category": "数据分析"
+    },
+    {
+      "repo": "numpy/numpy",
+      "description": "The fundamental package for scientific computing with Python.",
+      "stars": 33417,
+      "forks": 13106,
+      "issues": 2246,
+      "language": "Python",
+      "created_at": "2010-09-13T23:02:39Z",
+      "pushed_at": "2026-11-10T01:28:55Z",
+      "category": "数据分析"
+    },
+    {
+      "repo": "scikit-learn/scikit-learn",
+      "description": "scikit-learn: machine learning in Python",
+      "stars": 68123,
+      "forks": 27660,
+      "issues": 2167,
+      "language": "Python",
+      "created_at": "2010-08-17T09:43:38Z",
+      "pushed_at": "2026-11-10T03:58:32Z",
+      "category": "数据分析"
+    },
+    {
+      "repo": "psf/requests",
+      "description": "A simple, yet elegant, HTTP library.",
+      "stars": 54748,
+      "forks": 10765,
+      "issues": 251,
+      "language": "Python",
+      "created_at": "2011-02-13T18:38:17Z",
+      "pushed_at": "2026-11-02T16:55:12Z",
+      "category": "网络与采集"
+    },
+    {
+      "repo": "pallets/flask",
+      "description": "The Python micro framework for building web applications.",
+      "stars": 75085,
+      "forks": 17290,
+      "issues": 4,
+      "language": "Python",
+      "created_at": "2010-04-06T11:11:59Z",
+      "pushed_at": "2026-10-30T15:05:22Z",
+      "category": "Web 开发"
+    },
+    {
+      "repo": "django/django",
+      "description": "The Web framework for perfectionists with deadlines.",
+      "stars": 91699,
+      "forks": 35215,
+      "issues": 534,
+      "language": "Python",
+      "created_at": "2012-04-28T02:47:18Z",
+      "pushed_at": "2026-11-10T10:16:09Z",
+      "category": "Web 开发"
+    },
+    {
+      "repo": "fastapi/fastapi",
+      "description": "FastAPI framework, high performance, easy to learn, fast to code, ready for production",
+      "stars": 104608,
+      "forks": 10208,
+      "issues": 59,
+      "language": "Python",
+      "created_at": "2018-12-08T08:21:47Z",
+      "pushed_at": "2026-11-10T09:08:15Z",
+      "category": "Web 开发"
+    },
+    {
+      "repo": "scrapy/scrapy",
+      "description": "Scrapy, a fast high-level web crawling & scraping framework for Python.",
+      "stars": 65308,
+      "forks": 12116,
+      "issues": 181,
+      "language": "Python",
+      "created_at": "2010-02-22T02:01:14Z",
+      "pushed_at": "2026-11-09T15:10:50Z",
+      "category": "网络与采集"
+    },
+    {
+      "repo": "SeleniumHQ/selenium",
+      "description": "A browser automation framework and ecosystem.",
+      "stars": 34580,
+      "forks": 8725,
+      "issues": 191,
+      "language": "Java",
+      "created_at": "2013-01-14T21:40:56Z",
+      "pushed_at": "2026-11-10T11:57:30Z",
+      "category": "自动化"
+    },
+    {
+      "repo": "microsoft/playwright-python",
+      "description": "Python version of the Playwright testing and automation library.",
+      "stars": 15094,
+      "forks": 1256,
+      "issues": 1,
+      "language": "Python",
+      "created_at": "2020-07-01T15:28:13Z",
+      "pushed_at": "2026-11-10T03:43:50Z",
+      "category": "自动化"
+    },
+    {
+      "repo": "encode/httpx",
+      "description": "A next generation HTTP client for Python. 🦋",
+      "stars": 15765,
+      "forks": 1863,
+      "issues": 140,
+      "language": "Python",
+      "created_at": "2019-04-04T12:27:00Z",
+      "pushed_at": "2026-10-02T12:53:43Z",
+      "category": "网络与采集"
+    }
   ]
 }
