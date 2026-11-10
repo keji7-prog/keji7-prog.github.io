@@ -38,6 +38,15 @@ $('csv-demo').addEventListener('click',async()=>{try{$('csv-status').textContent
 $('csv-file').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{if(file.size>8*1024*1024)throw Error('文件超过 8 MB');setup(await file.text(),file.name)}catch(error){$('csv-status').textContent='CSV 读取失败：'+error.message}e.target.value=''});
 $('csv-reset').addEventListener('click',()=>{headers=[];rows=[];visible=[];numeric=[];dates=[];fieldTypes=[];page=0;source='';$('csv-only-complete').checked=false;$('csv-only-unique').checked=false;$('csv-search').value='';$('csv-metric').innerHTML='<option value="">请先载入数据</option>';$('csv-status').textContent='已清空';render()});
 $('csv-export').addEventListener('click',()=>{if(!headers.length||!visible.length)return;const csv=toCSV(headers,visible);const url=URL.createObjectURL(new Blob(['\uFEFF',csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='filtered-data.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+function qualityReport(){
+ const used=$('csv-only-complete').checked||$('csv-only-unique').checked||$('csv-search').value.trim();
+ const repeated=new Set();let duplicates=0;for(const r of rows){const key=JSON.stringify(r);if(repeated.has(key))duplicates++;else repeated.add(key)}
+ const fields=headers.map((name,i)=>{const present=rows.filter(r=>r[i].trim()!=='');const values=visible.map(r=>r[i].trim()).filter(Boolean);const type=fieldTypes[i]||'文本';const out={field:name,type,non_empty_count:present.length,missing_count:rows.length-present.length,distinct_count:new Set(rows.map(r=>r[i])).size};
+ if(type==='数值'&&values.length){const a=values.map(Number).filter(Number.isFinite),sum=a.reduce((x,y)=>x+y,0);if(a.length)out.filtered_numeric={count:a.length,min:Math.min(...a),max:Math.max(...a),mean:sum/a.length,median:median(a),q1:percentile(a,.25),q3:percentile(a,.75)}}
+ return out});
+ return {application:'Keji Yin CSV Data Explorer',generated_at:new Date().toISOString(),source_label:source,source_rows:rows.length,filtered_rows:visible.length,columns:headers.length,missing_cells:rows.reduce((n,r)=>n+r.filter(v=>v.trim()==='').length,0),duplicate_rows:duplicates,filters:{search:$('csv-search').value.trim(),only_complete:$('csv-only-complete').checked,only_unique:$('csv-only-unique').checked},applies_to:used?'active-filter-result':'full-source',fields,record_values_included:false}
+}
+$('csv-report').addEventListener('click',()=>{if(!rows.length){$('csv-status').textContent='请先加载数据';return}const data=JSON.stringify(qualityReport(),null,2);const url=URL.createObjectURL(new Blob([data],{type:'application/json;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='csv-quality-report.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
 const importLabel=document.querySelector('label[for="csv-file"]');
 if(importLabel)importLabel.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();$('csv-file').click()}});
 $('csv-demo').click();
