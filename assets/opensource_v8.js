@@ -22,7 +22,7 @@ function render(){
 for(const id of ['repo-q','repo-cat','repo-metric','repo-sort'])$(id).addEventListener(id==='repo-q'?'input':'change',render);
 $('repo-export').addEventListener('click',()=>{
  if(!view.length)return;
- const columns=['repo','category','stars','forks','issues','language','description'];const csv=[columns.join(','),...view.map(r=>columns.map(k=>'"'+String(r[k]??'').replace(/"/g,'""')+'"').join(','))].join('\r\n');
+ const columns=['repo','category','stars','forks','open_items','language','description'];const csv=[columns.join(','),...view.map(r=>columns.map(k=>'"'+String(k==='open_items'?r.issues:(r[k]??'')).replace(/"/g,'""')+'"').join(','))].join('\r\n');
  const blob=new Blob(['\uFEFF',csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='open-source-metrics-2026-11-10.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 });
 fetch('data/github_repos_snapshot.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(payload=>{
