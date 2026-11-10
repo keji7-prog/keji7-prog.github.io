@@ -1,0 +1,91 @@
+from pathlib import Path
+import os
+import json
+from playwright.sync_api import sync_playwright
+root=Path(__file__).resolve().parents[1]
+errors=[]
+def capture(page):page.on('pageerror',lambda e:errors.append(str(e)))
+def setup(browser,html,js,files=None,viewport=None):
+ page=browser.new_page(viewport=viewport or {'width':1366,'height':920},accept_downloads=True)
+ capture(page)
+ page.set_content((root/html).read_text(encoding='utf8'),wait_until='domcontentloaded')
+ for css in ['style.css','assets/detail.css','assets/apps-v9.css','assets/site-v11.css','assets/v13.css']:
+  if (root/css).exists():page.add_style_tag(content=(root/css).read_text())
+ files=files or {}
+ page.evaluate('''data=>{window.fetch=async function(url){const key=String(url);if(!(key in data))return new Response('Not found',{status:404});return new Response(JSON.stringify(data[key]),{status:200,headers:{'Content-Type':'application/json'}})}}''',files)
+ for script in js:page.add_script_tag(content=(root/script).read_text())
+ return page
+
+def check(cond,msg):
+ if not cond:raise AssertionError(msg)
+ return msg
+
+with sync_playwright() as p:
+ browser_path=os.environ.get('CHROMIUM_BIN')
+ b=p.chromium.launch(executable_path=browser_path if browser_path else None,headless=True,args=['--no-sandbox'])
+ github=json.loads((root/'data/github_repos_snapshot.json').read_text());housing=json.loads((root/'data/housing_aggregate_v8.json').read_text());tests=json.loads((root/'data/verified_calculator_checks.json').read_text())
+ page=setup(b,'opensource.html',['assets/opensource_v13.js'],{'data/github_repos_snapshot.json':github})
+ check(page.locator('#repo-tbody tr').count()==12,'GitHub 12 rows')
+ check('python/cpython' in page.locator('#repo-compare-result').inner_text(),'compare actual repositories')
+ page.locator('#repo-q').fill('pandas');check(page.locator('#repo-tbody tr').count()==1,'filter rows')
+ page.locator('#repo-q').fill('');page.locator('#repo-compare-metric').select_option('forks');check('Forks' in page.locator('#repo-compare-result').inner_text(),'comparison switches metric')
+ with page.expect_download() as d:page.locator('#repo-export').click()
+ check(d.value.suggested_filename.endswith('.csv'),'GitHub export')
+ page.close()
+
+ page=setup(b,'housing-case.html',['assets/housing_v13.js'],{'data/housing_aggregate_v8.json':housing})
+ check(page.locator('#housing-rows').inner_text()=='30','housing original total')
+ check(page.locator('#housing-bands .detail-bar').count()==5,'housing price bands')
+ page.locator('#housing-group').select_option('2室')
+ check(page.locator('#housing-rows').inner_text()=='14','housing two-bedroom count')
+ check(page.locator('#housing-group-rows').inner_text().count('14')>=1,'housing group table')
+ with page.expect_download() as d:page.locator('#housing-export').click()
+ check('housing-aggregate' in d.value.suggested_filename,'housing export')
+ page.close()
+
+ page=setup(b,'demos/csv-lab.html',['assets/csv_v13.js'],{'../data/github_repos_snapshot.json':github})
+ check(page.locator('#csv-count').inner_text()=='12','CSV actual source loaded')
+ check('完全重复行' in page.locator('#csv-quality').inner_text(),'CSV quality')
+ check('中位数' in page.locator('#csv-summary').inner_text(),'CSV numeric stats')
+ page.locator('#csv-file').set_input_files({'name':'irregular.csv','mimeType':'text/csv','buffer':b'a,b\n1,2\n3\n'})
+ check('字段' not in page.locator('#csv-status').inner_text() or '行' in page.locator('#csv-status').inner_text(),'CSV irregular message')
+ check('第 3 行' in page.locator('#csv-status').inner_text(),'CSV fails irregular row instead of silently dropping')
+ page.locator('#csv-file').set_input_files({'name':'records.csv','mimeType':'text/csv','buffer':('a,b\n'+'\n'.join(f'{i},{i*2}' for i in range(130))).encode()})
+ check(page.locator('#csv-next').is_enabled(),'pagination next enabled')
+ page.locator('#csv-next').click();check(page.locator('#csv-rows').inner_text().startswith('51'),'pagination second page')
+ with page.expect_download() as d:page.locator('#csv-export').click()
+ check('filtered' in d.value.suggested_filename,'CSV export')
+ page.close()
+
+ page=setup(b,'desktop.html',['assets/desktop-v13.js'],{'data/verified_calculator_checks.json':tests})
+ check(page.locator('#desktop-checks tr').count()==5,'desktop result table sourced from archived checks')
+ check('5/5' in page.locator('#desktop-evidence').inner_text(),'desktop actual checks count')
+ page.close()
+
+ page=setup(b,'lab.html',['assets/apps-v9.js','assets/apps-enhance-v13.js'],viewport={'width':390,'height':844})
+ for k in ['1','2','+','3','=']:page.locator(f'#calc-keys [data-key="{k}"]').click()
+ check(page.locator('#calc-display').inner_text()=='15','calculator execution')
+ check(page.locator('#calc-log li').count()>=1,'calculator history')
+ page.locator('[data-app="notes"]').click()
+ page.locator('#note-body').fill('实际测试\n第二行')
+ check('2 行' in page.locator('#note-metrics').inner_text(),'note lines')
+ page.locator('#note-file').set_input_files({'name':'notes.txt','mimeType':'text/plain','buffer':'导入内容'.encode()})
+ check(page.locator('#note-body').input_value()=='导入内容','notes file import')
+ page.locator('[data-app="draw"]').click()
+ page.locator('#draw-ten').click();page.wait_for_timeout(80)
+ check(page.locator('#draw-count').inner_text()=='10','draw count')
+ check('传说' in page.locator('#draw-breakdown').inner_text(),'draw distribution')
+ with page.expect_download() as d:page.locator('#draw-export').click()
+ check(d.value.suggested_filename.endswith('.csv'),'draw export')
+ page.locator('[data-app="text"]').click()
+ page.locator('#text-input').fill('Alpha\nalpha\nBETA')
+ page.locator('#text-ignore-case').check();page.locator('#text-clean').click()
+ check(page.locator('#text-output').input_value()=='Alpha\nBETA','case insensitive dedupe')
+ page.locator('[data-app="timer"]').click();page.locator('#custom-min').fill('2');page.locator('#custom-go').click();check(page.locator('#time-display').inner_text()=='02:00','custom timer')
+ page.locator('#timer-go').click();check(page.locator('#timer-go').inner_text()=='暂停','timer running')
+ page.locator('#timer-go').click();check(page.locator('#timer-go').inner_text()=='开始','timer paused')
+ w=page.evaluate('document.documentElement.scrollWidth'),page.evaluate('window.innerWidth');check(w[0]<=w[1]+2,'mobile no overflow '+str(w))
+ page.close()
+ b.close()
+print('V13 UI tests passed. Browser page errors:',errors)
+if errors:raise Exception('Page JS errors')
