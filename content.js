@@ -7,9 +7,9 @@ window.KEJI_PORTFOLIO = {
   github: 'https://github.com/keji7-prog',
   skills: ['Python', 'Pandas', 'DrissionPage', 'JavaScript', 'HTML / CSS', 'REST API', 'Data Visualization', 'GitHub Pages'],
   projects: [
-    {id:'opensource',num:'01',category:'data',title:'Open Source Data Explorer',subtitle:'开源项目指标分析',description:'分析 12 个真实 GitHub 开源仓库的公开快照，可筛选、并排比较指标并导出数据。',tags:['Python','GitHub API','Data Visualization'],href:'opensource.html',art:'github',tint:'mint'},
-    {id:'housing',num:'02',category:'crawler',title:'北京二手房数据采集',subtitle:'Browser-based Data Collection',description:'浏览器采集 30 条北京房源记录，分析户型、挂牌价格区间与面积，并导出汇总。',tags:['DrissionPage','Pandas','Excel'],href:'housing-case.html',art:'housing',tint:'blue'},
-    {id:'csv',num:'03',category:'data',title:'CSV Data Explorer',subtitle:'交互式数据处理工具',description:'导入真实 CSV 或公开 API 数据，检查空值与重复、验证列结构、查看统计并导出筛选结果。',tags:['JavaScript','CSV','Charts'],href:'demos/csv-lab.html',art:'csv',tint:'lavender'},
+    {id:'opensource',num:'01',category:'data',title:'Open Source Data Explorer',subtitle:'开源项目指标分析',description:'分析 12 个真实 GitHub 仓库的公开快照，比较指标与最近推送间隔，并导出数据。',tags:['Python','GitHub API','Data Visualization'],href:'opensource.html',art:'github',tint:'mint'},
+    {id:'housing',num:'02',category:'crawler',title:'北京二手房数据采集',subtitle:'Browser-based Data Collection',description:'基于 30 条真实房源采集记录，探索户型、价格区间和样本占比，导出汇总结果。',tags:['DrissionPage','Pandas','Excel'],href:'housing-case.html',art:'housing',tint:'blue'},
+    {id:'csv',num:'03',category:'data',title:'CSV Data Explorer',subtitle:'交互式数据处理工具',description:'导入 CSV 或公开 API 数据，检查字段与缺失值、筛选重复记录、分析四分位数并下载质量报告。',tags:['JavaScript','CSV','Charts'],href:'demos/csv-lab.html',art:'csv',tint:'lavender'},
     {id:'tkinter',num:'04',category:'apps',title:'Python Desktop Calculator',subtitle:'桌面计算器',description:'Python Tkinter 桌面计算器，展示实际运行界面、核心运算及由程序记录读取的验证结果。',tags:['Python','Tkinter','GUI'],href:'desktop.html',art:'desktop',tint:'peach'},
     {id:'webcalc',num:'05',category:'apps',title:'Expression Calculator',subtitle:'在线表达式计算器',description:'自定义表达式解析器，支持括号和四则运算、键盘输入、计算历史与复制结果。',tags:['JavaScript','Parser','UI'],href:'lab.html#calculator',art:'calculator',tint:'mint'},
     {id:'timer',num:'06',category:'apps',title:'Focus Timer',subtitle:'专注与休息计时器',description:'可选预设或自定义时长，支持暂停、继续、重置，以及已完成计时次数统计。',tags:['JavaScript','State','Timer'],href:'lab.html#timer',art:'timer',tint:'blue'},
