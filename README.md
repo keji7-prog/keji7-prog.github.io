@@ -1,55 +1,35 @@
-# Keji Yin · Python & Data Portfolio
+# Keji Yin · Complete Python Portfolio
 
-[Visit the public website](https://keji7-prog.github.io/) | [Open Source Data Explorer](https://keji7-prog.github.io/opensource.html) | [Tkinter Calculator](https://keji7-prog.github.io/desktop.html)
+Personal portfolio: **https://keji7-prog.github.io/**
 
-A selected portfolio of practical Python, data processing and desktop interface projects.
+This is a consolidated portfolio for the first stage of Python coursework and independent integration work. Instead of many disconnected demo pages, all project entries are surfaced from the home page.
 
-## Selected projects
+## Site pages
 
-### 01. GitHub Open-Source Data Explorer
+| Page | What it shows |
+|---|---|
+| `index.html` | Complete portfolio / project gallery (20 entries) |
+| `opensource.html` | 12 verified public GitHub repository metadata observations and Python analysis |
+| `desktop.html` | Captured, executed Python/Tkinter GUI exercise and calculator test outputs |
+| `demos/csv-lab.html` | Direct CSV analysis in the browser |
+| `lab.html` | Five functioning original browser tools: math, timer, notes, draw, text cleaning |
+| `practice.html` | Previously executed classroom dataset statistics, plainly labeled as classroom/synthetic |
+| `archive.html` | Day 01–24 course index with 50 uploaded Python scripts |
+| `code.html` | Source code viewer (loads the original published files from `examples/`) |
 
-Collects public repository metadata for 12 selected Python-related open-source repositories through the official GitHub REST API, then runs Python analysis for ranking, median star counts and category distributions. The results are displayed in a fully interactive static page with search, filtering, sorting and direct links to all original repositories.
+The browser versions of tools are fresh JavaScript adaptations based on learning concepts; they are **not** presentations of a Windows Python EXE running in the browser. Not all course materials are independently authored or executed. Source code viewing is not equivalent to verifying execution.
 
-- **Source**: GitHub REST API `GET /repos/{owner}/{repo}`.
-- **Snapshot date**: 2026-11-10.
-- **Raw snapshot**: `data/github_repos_snapshot.json`.
-- **Python analysis output**: `data/github_repos_analysis.json`.
-- **Analysis implementation**: `scripts/analyze_github_repos.py`.
-- **Recollection implementation**: `scripts/collect_github_repos.py`.
+## Private project
 
-The published snapshot was retrieved using a connected GitHub interface and processed with the included Python script. The separate Python collection script offers a way to refresh it when executed in an environment with GitHub API network access. This is a curated sample, not a complete ecosystem dataset.
+The actual Beijing property-listing collection from the user's local DrissionPage run lives at **`keji7-prog/beike-housing-project` (Private)**. Visitors must be explicitly authorized by the repository owner to access this raw data. The public site only provides an explanatory project entry linking to the private repository; **no private house records are copied into the website**.
 
-Re-run the analysis:
+## GitHub Pages
 
-```bash
-python scripts/analyze_github_repos.py
-```
+Already configured for `main` + `/ (root)`. All pages are native HTML, CSS, JavaScript, no build system. Existing GitHub data exploration page, saved sources, and related scripts remain intact. New integrated files are:
 
-Re-fetch current GitHub metadata (internet required):
+- `index.html`, `lab.html`, `archive.html`, `code.html`, `practice.html`
+- `assets/portfolio.css`, `assets/portfolio.js`, `assets/apps.js`, `assets/archive.js`, `assets/practice.js`
 
-```bash
-python scripts/collect_github_repos.py
-python scripts/analyze_github_repos.py
-```
+## Source & integrity
 
-### 02. Tkinter Calculator
-
-An adaptation and refinement of a classroom calculator exercise. Improvements include an evenly laid out button grid, constrained arithmetic expression parsing and basic exception handling. The project includes an actual application screenshot, Python source code and executed functional checks.
-
-- **App**: `scripts/verified_calculator.py`.
-- **GUI interaction test**: `scripts/test_verified_calculator.py`.
-- **Test results**: `data/verified_calculator_checks.json`.
-- **Screenshot**: embedded as a real captured application image in `desktop.html`.
-
-The GUI test and screenshot were taken on Linux Tk 8.6 under Xvfb. The Windows EXE from the classroom is not part of this project or presented as separately tested.
-
-## Website architecture
-
-All public pages are static HTML/CSS/JavaScript, deployed on GitHub Pages. No secrets, browser cookies, authenticated API calls or private accounts are included in the website. All linked data is publicly available.
-
-- `index.html`: selected work and about.
-- `opensource.html`: interactive repository dataset.
-- `desktop.html`: desktop application showcase.
-- `assets/site.css`, `assets/site.js`: shared site design and interactivity.
-
-Previously shared course CSV summaries and nonverified listing examples are not included in the curated public showcase. Earlier versions remain in Git history for archival purposes. Teacher material and prior classroom code are not represented as fully independent original projects.
+Course scripts in `examples/` were chosen from supplied learning materials. The project gallery distinguishes real externally checked API data, private local scraping, executed desktop test results, independent interactive browser adaptations, and classroom/simulated data or source-only exercises. Teacher example site assets are not presented as the student's original creations.
