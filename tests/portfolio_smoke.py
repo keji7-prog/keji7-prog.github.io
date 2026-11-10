@@ -70,6 +70,7 @@ with sync_playwright() as p:
  page.locator('#note-body').fill('实际测试\n第二行')
  check('2 行' in page.locator('#note-metrics').inner_text(),'note lines')
  page.locator('#note-file').set_input_files({'name':'notes.txt','mimeType':'text/plain','buffer':'导入内容'.encode()})
+ page.wait_for_function("document.querySelector('#note-body').value === '导入内容'")
  check(page.locator('#note-body').input_value()=='导入内容','notes file import')
  page.locator('[data-app="draw"]').click()
  page.locator('#draw-ten').click();page.wait_for_timeout(80)
