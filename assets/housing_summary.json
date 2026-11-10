@@ -1,0 +1,51 @@
+{
+  "source": "Beijing second-hand housing list page",
+  "collection_date": "2026-11-10",
+  "records": 30,
+  "fields": 13,
+  "unique_urls": 30,
+  "median_total_wan": 425.0,
+  "median_unit_yuan": 56537.0,
+  "median_area_sqm": 88.31,
+  "rooms": [
+    {
+      "name": "1室",
+      "count": 6
+    },
+    {
+      "name": "2室",
+      "count": 14
+    },
+    {
+      "name": "3室",
+      "count": 9
+    },
+    {
+      "name": "4室",
+      "count": 1
+    }
+  ],
+  "price_bands": [
+    {
+      "name": "200万以下",
+      "count": 4
+    },
+    {
+      "name": "200–400万",
+      "count": 10
+    },
+    {
+      "name": "400–600万",
+      "count": 8
+    },
+    {
+      "name": "600–1000万",
+      "count": 4
+    },
+    {
+      "name": "1000万以上",
+      "count": 4
+    }
+  ],
+  "source_url": "https://bj.ke.com/ershoufang/"
+}
