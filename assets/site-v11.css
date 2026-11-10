@@ -17,3 +17,11 @@
 .v11-footer{margin-top:20px}
 @media(max-width:690px){.v11-site-header .header-inner{height:65px}.v11-site-header .nav-right{margin-left:auto}.v11-site-header #site-nav{z-index:100;top:65px}.v11-related-grid{grid-template-columns:1fr}.v11-related{margin:35px auto 55px}.v11-related-card{padding:15px 17px}.v11-related-top{align-items:flex-start}}
 @media(prefers-reduced-motion:reduce){.v11-related-card{transition:none}}
+
+/* V12: small, accessible direct-share action in the related-project header. */
+.v12-share-actions{display:flex;align-items:center;gap:17px;flex-wrap:wrap}
+.v12-copy-button{appearance:none;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--primary);font:650 12px/1.4 system-ui,-apple-system,sans-serif;padding:9px 12px;cursor:pointer;white-space:nowrap}
+.v12-copy-button:hover{border-color:var(--primary);background:var(--pale)}
+.v12-copy-button:focus-visible{outline:3px solid var(--primary);outline-offset:3px}
+.v12-copy-button span{margin-left:4px}
+@media(max-width:690px){.v11-related-top{flex-wrap:wrap}.v12-share-actions{width:100%;justify-content:space-between;gap:8px}.v12-copy-button{font-size:11px;padding:8px 9px}}
