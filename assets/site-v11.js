@@ -14,6 +14,29 @@
  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
  document.addEventListener('click',e=>{if(nav.classList.contains('open')&&!nav.contains(e.target)&&!menu.contains(e.target))close()});
  }
+ const shareButton=document.getElementById('v12-copy-link');
+ if(shareButton){
+  const original=shareButton.textContent;
+  shareButton.addEventListener('click',async()=>{
+   const link=location.origin+location.pathname+location.search;
+   try{
+    if(!navigator.clipboard?.writeText)throw Error('clipboard unavailable');
+    await navigator.clipboard.writeText(link);
+    shareButton.textContent='链接已复制 ✓';
+    shareButton.setAttribute('aria-label','已复制当前项目链接');
+   }catch(error){
+    const field=document.createElement('textarea');field.value=link;field.setAttribute('readonly','');
+    field.style.position='fixed';field.style.opacity='0';document.body.appendChild(field);field.select();
+    try{
+      if(!document.execCommand('copy'))throw Error('copy failed');
+      shareButton.textContent='链接已复制 ✓';
+    }catch(_){shareButton.textContent='复制失败，请使用地址栏';}
+    field.remove();
+   }
+   const state=shareButton.textContent;
+   setTimeout(()=>{if(shareButton.textContent===state){shareButton.textContent=original;shareButton.setAttribute('aria-label','复制当前项目链接')}},2300);
+  });
+ }
  const header=document.getElementById('detail-header');
  const onScroll=()=>{if(header)header.classList.toggle('scrolled',scrollY>20)};
  onScroll();addEventListener('scroll',onScroll,{passive:true});
