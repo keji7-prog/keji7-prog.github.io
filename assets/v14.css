@@ -1,0 +1,12 @@
+/* V14: detailed, readable data-quality controls and statistic descriptions. */
+.v14-quality-controls{display:flex;gap:12px 20px;flex-wrap:wrap;align-items:center;margin:14px 0 22px;padding:13px 16px;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+.v14-quality-controls label{display:inline-flex;align-items:center;gap:7px;font-size:13px;line-height:1.6;color:var(--text);cursor:pointer;user-select:none}
+.v14-quality-controls input{width:17px;height:17px;accent-color:var(--primary)}
+.v14-quality-controls input:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+.v14-help{font-size:12px;line-height:1.8;color:var(--dim);margin:10px 0}
+.v14-metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.v14-metric-grid>div{padding:13px 16px;border:1px solid var(--line);border-radius:7px;background:var(--paper2)}
+.v14-metric-grid small{display:block;font-size:11px;color:var(--dim);margin-bottom:6px}
+.v14-metric-grid strong{font-size:19px;color:var(--primary);font-variant-numeric:tabular-nums}
+.v14-heading-row{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+@media(max-width:700px){.v14-metric-grid{grid-template-columns:1fr}.v14-quality-controls{display:grid;gap:10px}}
