@@ -20,6 +20,16 @@ Existing project applications remain available under `opensource.html`, `desktop
 
 The site lists selected public project results. The detailed Beijing housing CSV and Excel stay in the separate private repository `beike-housing-project`; those raw files are **not** deployed on the public website. The public case displays only aggregate statistics from the November 10, 2026 collection run.
 
+## Evidence and reproducibility
+
+[Evidence register](docs/EVIDENCE_REGISTER.md) separates observed source records, execution evidence, derived metrics and presentation. The public Beijing housing summary can be reproduced with an authorized copy of the archived CSV:
+
+```bash
+python projects/housing_analysis.py path/to/beike_listings.csv --verify data/housing_aggregate_v8.json
+```
+
+The site is a showcase of dated observations and functioning tools, not a live property-market or repository-activity feed.
+
 ## Data
 
 GitHub repository metrics come from the GitHub REST API and are presented as a dated snapshot, not a live feed. The source collection and analysis scripts are available in this repository.
