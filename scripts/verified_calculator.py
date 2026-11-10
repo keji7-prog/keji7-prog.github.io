@@ -1,7 +1,8 @@
-"""Day24 learning exercise: a measured UI/logic revision of the course calculator.
+"""Tkinter calculator application with a responsive keypad and restricted arithmetic parser.
 
-The original course version is preserved separately. This version fixes clipped
-buttons and restricts arithmetic instead of evaluating arbitrary Python input.
+The interface presents mathematical operations and handles invalid input without
+executing arbitrary Python code.
+
 Run: python scripts/verified_calculator.py
 """
 import ast
