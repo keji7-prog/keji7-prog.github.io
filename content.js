@@ -7,14 +7,14 @@ window.KEJI_PORTFOLIO = {
   github: 'https://github.com/keji7-prog',
   skills: ['Python', 'Pandas', 'DrissionPage', 'JavaScript', 'HTML / CSS', 'REST API', 'Data Visualization', 'GitHub Pages'],
   projects: [
-    {id:'opensource',num:'01',category:'data',title:'Open Source Data Explorer',subtitle:'开源项目指标分析',description:'获取 12 个真实开源仓库的公开指标，以图表、筛选和排序探索 Python 生态。',tags:['Python','GitHub API','Data Visualization'],href:'opensource.html',art:'github',tint:'mint'},
-    {id:'housing',num:'02',category:'crawler',title:'北京二手房数据采集',subtitle:'Browser-based Data Collection',description:'使用 Chromium 浏览器提取真实列表信息，完成 30 条房源记录的结构化处理和汇总分析。',tags:['DrissionPage','Pandas','Excel'],href:'housing-case.html',art:'housing',tint:'blue'},
-    {id:'csv',num:'03',category:'data',title:'CSV Data Explorer',subtitle:'交互式数据处理工具',description:'导入自己的 CSV 或加载 GitHub 公开数据，自动查看字段、数据表和数值分布。',tags:['JavaScript','CSV','Charts'],href:'demos/csv-lab.html',art:'csv',tint:'lavender'},
-    {id:'tkinter',num:'04',category:'apps',title:'Python Desktop Calculator',subtitle:'桌面计算器',description:'采用 Tkinter 开发的桌面运算工具，支持四则运算、平方、平方根、百分比与表达式校验。',tags:['Python','Tkinter','GUI'],href:'desktop.html',art:'desktop',tint:'peach'},
-    {id:'webcalc',num:'05',category:'apps',title:'Expression Calculator',subtitle:'在线表达式计算器',description:'无需安装即可执行括号和四则运算，使用自定义解析器处理表达式。',tags:['JavaScript','Parser','UI'],href:'lab.html#calculator',art:'calculator',tint:'mint'},
-    {id:'timer',num:'06',category:'apps',title:'Focus Timer',subtitle:'专注与休息计时器',description:'可在专注和休息模式之间切换，支持开始、暂停、重置与进度反馈。',tags:['JavaScript','State','Timer'],href:'lab.html#timer',art:'timer',tint:'blue'},
-    {id:'notes',num:'07',category:'apps',title:'Quick Notes',subtitle:'浏览器便签工具',description:'即时编辑、浏览器本地保存与 TXT 导出，无需登录即可使用。',tags:['Local Storage','Text','Export'],href:'lab.html#notes',art:'notes',tint:'sand'},
-    {id:'cleaner',num:'08',category:'apps',title:'Text & Data Cleaner',subtitle:'文本清洗工具',description:'按行去重、清除空行、统计关键词出现次数，并导出整理结果。',tags:['Text Processing','JavaScript'],href:'lab.html#text',art:'cleaner',tint:'lavender'},
-    {id:'cards',num:'09',category:'creative',title:'Random Card Generator',subtitle:'随机卡片互动程序',description:'使用加权随机规则生成卡片，提供连续抽取、结果记录与统计。',tags:['Random','Interaction','UI'],href:'lab.html#draw',art:'cards',tint:'peach'}
+    {id:'opensource',num:'01',category:'data',title:'Open Source Data Explorer',subtitle:'开源项目指标分析',description:'分析 12 个真实 GitHub 开源仓库的公开快照，可筛选、并排比较指标并导出数据。',tags:['Python','GitHub API','Data Visualization'],href:'opensource.html',art:'github',tint:'mint'},
+    {id:'housing',num:'02',category:'crawler',title:'北京二手房数据采集',subtitle:'Browser-based Data Collection',description:'浏览器采集 30 条北京房源记录，分析户型、挂牌价格区间与面积，并导出汇总。',tags:['DrissionPage','Pandas','Excel'],href:'housing-case.html',art:'housing',tint:'blue'},
+    {id:'csv',num:'03',category:'data',title:'CSV Data Explorer',subtitle:'交互式数据处理工具',description:'导入真实 CSV 或公开 API 数据，检查空值与重复、验证列结构、查看统计并导出筛选结果。',tags:['JavaScript','CSV','Charts'],href:'demos/csv-lab.html',art:'csv',tint:'lavender'},
+    {id:'tkinter',num:'04',category:'apps',title:'Python Desktop Calculator',subtitle:'桌面计算器',description:'Python Tkinter 桌面计算器，展示实际运行界面、核心运算及由程序记录读取的验证结果。',tags:['Python','Tkinter','GUI'],href:'desktop.html',art:'desktop',tint:'peach'},
+    {id:'webcalc',num:'05',category:'apps',title:'Expression Calculator',subtitle:'在线表达式计算器',description:'自定义表达式解析器，支持括号和四则运算、键盘输入、计算历史与复制结果。',tags:['JavaScript','Parser','UI'],href:'lab.html#calculator',art:'calculator',tint:'mint'},
+    {id:'timer',num:'06',category:'apps',title:'Focus Timer',subtitle:'专注与休息计时器',description:'可选预设或自定义时长，支持暂停、继续、重置，以及已完成计时次数统计。',tags:['JavaScript','State','Timer'],href:'lab.html#timer',art:'timer',tint:'blue'},
+    {id:'notes',num:'07',category:'apps',title:'Quick Notes',subtitle:'浏览器便签工具',description:'本地保存单篇便签，支持 TXT 导入导出，并实时显示字符数和行数。',tags:['Local Storage','Text','Export'],href:'lab.html#notes',art:'notes',tint:'sand'},
+    {id:'cleaner',num:'08',category:'apps',title:'Text & Data Cleaner',subtitle:'文本清洗工具',description:'多行文本去重、去空行、可选忽略大小写和关键词统计，支持 TXT 导出。',tags:['Text Processing','JavaScript'],href:'lab.html#text',art:'cleaner',tint:'lavender'},
+    {id:'cards',num:'09',category:'creative',title:'Random Card Generator',subtitle:'随机卡片互动程序',description:'按明示概率随机生成卡片，统计当前会话的实际结果并可导出 CSV。',tags:['Random','Interaction','UI'],href:'lab.html#draw',art:'cards',tint:'peach'}
   ]
 };
