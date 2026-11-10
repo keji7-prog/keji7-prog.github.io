@@ -12,7 +12,7 @@ A focused portfolio of Python, data analysis, browser-based data collection, and
 - `style.css` — responsive typography, layouts, and project preview illustrations
 - `housing-case.html` — public, aggregated results of a verified local collection run
 - `projects/housing_analysis.py` — reproducible Pandas analysis script (requires the private CSV as input)
-- `assets/housing_summary.json` — non-identifying aggregate metrics used for the public case
+- `data/housing_aggregate_v8.json` — verified public-only aggregate, including source date and field count
 
 Existing project applications remain available under `opensource.html`, `desktop.html`, `demos/csv-lab.html`, and `lab.html`.
 
