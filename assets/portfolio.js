@@ -1,5 +1,179 @@
-const PROJECTS = [{"id":"open","cat":"data","kind":"现实数据","title":"Open Source Data Explorer","desc":"12 个真实开源项目的 API 数据快照，提供指标统计、搜索、排序与跳转原始仓库。","href":"opensource.html","label":"探索数据","tags":["Python","REST API","JSON"],"symbol":"12","bg":"#1b5044"},{"id":"beike","cat":"crawler","kind":"私人实作","title":"北京二手房网页采集","desc":"本机 DrissionPage 采集、30 条房源记录、Excel/CSV 导出与交互分析。详情存放私人仓库。","href":"https://github.com/keji7-prog/beike-housing-project","label":"已授权账号查看源码","tags":["DrissionPage","Pandas","Excel"],"symbol":"京","bg":"#26475e","external":true},{"id":"csv","cat":"data","kind":"可交互应用","title":"CSV 数据实验室","desc":"在浏览器中读取本地 CSV，自动识别列、预览数据、计算数值和分类分布。","href":"demos/csv-lab.html","label":"打开数据工具","tags":["CSV","JavaScript","Charts"],"symbol":"CSV","bg":"#243e61"},{"id":"desktop","cat":"desktop","kind":"桌面运行成果","title":"Tkinter Calculator","desc":"Python 计算器的实际 GUI 运行画面、算式测试与可下载源码。","href":"desktop.html","label":"查看运行成果","tags":["Python","Tkinter","GUI"],"symbol":"⌗","bg":"#53436a"},{"id":"math","cat":"web","kind":"网页可运行","title":"交互计算器","desc":"将基础运算练习制作成浏览器计算器，支持括号、四则运算和历史结果。","href":"lab.html#calculator","label":"立即体验","tags":["Algorithms","Parser","JavaScript"],"symbol":"÷","bg":"#46556e"},{"id":"timer","cat":"web","kind":"网页可运行","title":"专注倒计时器","desc":"自由选择学习/休息时长，开始、暂停、重置与进度展示。","href":"lab.html#timer","label":"启动计时器","tags":["Timer","State","UI"],"symbol":"25:00","bg":"#3d5d53"},{"id":"notes","cat":"web","kind":"网页可运行","title":"桌面便签 · Web 版","desc":"自动保存浏览器便签，支持即时字数统计与 TXT 导出。","href":"lab.html#notes","label":"打开便签","tags":["LocalStorage","Text","Export"],"symbol":"✎","bg":"#5b4a39"},{"id":"draw","cat":"web","kind":"网页可运行","title":"英雄盲盒模拟器","desc":"基于随机选择、权重与状态的抽卡练习，支持单抽与十连抽。","href":"lab.html#draw","label":"体验抽卡","tags":["Random","Loops","State"],"symbol":"✦","bg":"#59485d"},{"id":"text","cat":"web","kind":"网页可运行","title":"文本与数据清理工具","desc":"在浏览器执行行去重、空行清理、关键字统计和文本下载。","href":"lab.html#text","label":"开始处理","tags":["Strings","Cleaning","Data"],"symbol":"TXT","bg":"#284857"},{"id":"exams","cat":"analysis","kind":"课堂数据分析","title":"院校数据处理与可视化","desc":"读取课堂样本后完成分组、统计与重复记录检查，可按年份和院校查看汇总。","href":"practice.html#exams","label":"查看统计输出","tags":["Pandas","Grouping","Charts"],"symbol":"20","bg":"#354961"},{"id":"salary","cat":"analysis","kind":"模拟数据练习","title":"岗位技能薪资模拟分析","desc":"对 30,000 行标明为模拟的数据做技能、城市和时间分组分析。","href":"practice.html#salary","label":"查看分析结果","tags":["Python","Statistics","ECharts"],"symbol":"30k","bg":"#3f5361"},{"id":"social","cat":"analysis","kind":"课堂数据分析","title":"笔记互动指标分析","desc":"匿名统计 927 条课堂帖子样本的点赞、收藏、评论和分享分布。","href":"practice.html#social","label":"查看统计输出","tags":["CSV","Aggregation","Privacy"],"symbol":"927","bg":"#4b405c"},{"id":"novel","cat":"crawler","kind":"课程源码","title":"多章节文本提取","desc":"文本抓取、HTML 结构解析及章节内容提取的 Python 代码练习。","href":"code.html?path=examples/day09/demo3小说多章提取.py","label":"查看 Python 源码","tags":["Requests","XPath","Text"],"symbol":"09","bg":"#344a43"},{"id":"images","cat":"crawler","kind":"课程源码","title":"图片批量采集","desc":"HTML 列表解析与图片文件保存脚本，可查看完整课程代码。","href":"code.html?path=examples/day13/demo1百度图片自动化批量下载.py","label":"查看 Python 源码","tags":["Python","Browser","Files"],"symbol":"13","bg":"#5d4e3e"},{"id":"freelance","cat":"crawler","kind":"课程源码","title":"自由职业岗位信息处理","desc":"采集与读取任务信息、提取关键字段的代码练习。","href":"code.html?path=examples/day15/demo3猿急送数据获取.py","label":"查看 Python 源码","tags":["Crawler","Field Extraction"],"symbol":"15","bg":"#315661"},{"id":"threads","cat":"automation","kind":"课程源码","title":"多线程任务调度","desc":"比较串行请求与线程任务，并检查执行流程和等待状态。","href":"code.html?path=examples/day17/demo5多线程请求.py","label":"查看 Python 源码","tags":["Threading","Requests"],"symbol":"17","bg":"#3c526a"},{"id":"watch","cat":"automation","kind":"课程源码","title":"商品信息监控","desc":"浏览器采集、XPath 以及周期检查逻辑的课程实现代码。","href":"code.html?path=examples/day18/demo3Drissionpage监控闲鱼数据.py","label":"查看 Python 源码","tags":["DrissionPage","Monitor"],"symbol":"18","bg":"#574f42"},{"id":"toolkit","cat":"desktop","kind":"桌面源码","title":"Python 六大桌面工具合集","desc":"计算器、倒计时器、便签、截图等工具源码，支持逐文件阅读。","href":"archive.html?day=24","label":"浏览桌面工具代码","tags":["Tkinter","Tools","Python"],"symbol":"6×","bg":"#514a62"},{"id":"learning","cat":"code","kind":"完整课程代码","title":"24 天 Python 代码档案","desc":"24 个课程学习单元与 50 份公开练习脚本，支持按日期与关键词浏览。","href":"archive.html","label":"打开代码档案","tags":["Python","24 Days","GitHub"],"symbol":"24","bg":"#2d5a4f"},{"id":"pages","cat":"web","kind":"已部署网站","title":"GitHub Pages 作品集","desc":"项目导航、响应式布局与 GitHub 文件发布，当前页面即为运行成果。","href":"index.html","label":"查看当前网站","tags":["HTML","CSS","GitHub"],"symbol":"K.","bg":"#344e54"}];
-const FILTERS=[['all','全部项目'],['data','真实数据 / CSV'],['web','网页应用'],['desktop','桌面工具'],['analysis','数据练习'],['crawler','网页采集'],['automation','自动化'],['code','代码档案']];
+const PROJECTS = [
+  {
+    "id": "open",
+    "cat": "data",
+    "kind": "公开数据项目",
+    "title": "Open Source Data Explorer",
+    "desc": "基于 GitHub REST API 获取 12 个开源项目的公开指标，支持多维统计、筛选、排序与仓库溯源。",
+    "href": "opensource.html",
+    "label": "探索数据",
+    "tags": [
+      "Python",
+      "GitHub API",
+      "Data Analysis"
+    ],
+    "symbol": "API",
+    "bg": "#1b5044"
+  },
+  {
+    "id": "beike",
+    "cat": "crawler",
+    "kind": "真实网页采集",
+    "title": "北京房源信息采集",
+    "desc": "在本地 Chromium 环境读取真实房源列表，解析 30 条记录并导出 Excel 和 CSV。完整数据存放于授权访问的私有仓库。",
+    "href": "https://github.com/keji7-prog/beike-housing-project",
+    "label": "查看私有项目",
+    "tags": [
+      "DrissionPage",
+      "Pandas",
+      "Excel"
+    ],
+    "symbol": "30",
+    "bg": "#26475e",
+    "external": true
+  },
+  {
+    "id": "csv",
+    "cat": "data",
+    "kind": "交互数据工具",
+    "title": "CSV Data Explorer",
+    "desc": "直接读取真实 CSV 或加载 GitHub 公开项目数据，识别字段、分析数值分布并生成可视化表格。",
+    "href": "demos/csv-lab.html",
+    "label": "打开 CSV 工具",
+    "tags": [
+      "JavaScript",
+      "CSV",
+      "Visualization"
+    ],
+    "symbol": "CSV",
+    "bg": "#243e61"
+  },
+  {
+    "id": "desktop",
+    "cat": "desktop",
+    "kind": "已运行应用",
+    "title": "Tkinter Calculator",
+    "desc": "Python 桌面计算器的实际运行界面、运算功能与源码，支持表达式解析和输入校验。",
+    "href": "desktop.html",
+    "label": "查看程序",
+    "tags": [
+      "Python",
+      "Tkinter",
+      "AST"
+    ],
+    "symbol": "⌗",
+    "bg": "#53436a"
+  },
+  {
+    "id": "math",
+    "cat": "web",
+    "kind": "在线应用",
+    "title": "表达式计算器",
+    "desc": "支持括号、四则运算与历史结果；浏览器中运行自定义表达式解析器。",
+    "href": "lab.html#calculator",
+    "label": "立即使用",
+    "tags": [
+      "Algorithms",
+      "JavaScript"
+    ],
+    "symbol": "÷",
+    "bg": "#46556e"
+  },
+  {
+    "id": "timer",
+    "cat": "web",
+    "kind": "在线应用",
+    "title": "Focus Timer",
+    "desc": "可切换专注与休息时长的计时工具，支持暂停、继续、重置和实时进度。",
+    "href": "lab.html#timer",
+    "label": "开始计时",
+    "tags": [
+      "Timer",
+      "State"
+    ],
+    "symbol": "25:00",
+    "bg": "#3d5d53"
+  },
+  {
+    "id": "notes",
+    "cat": "web",
+    "kind": "在线应用",
+    "title": "Quick Notes",
+    "desc": "即写即存的浏览器便签，支持本地保存、文本编辑和 TXT 导出。",
+    "href": "lab.html#notes",
+    "label": "打开便签",
+    "tags": [
+      "LocalStorage",
+      "Export"
+    ],
+    "symbol": "✎",
+    "bg": "#5b4a39"
+  },
+  {
+    "id": "text",
+    "cat": "web",
+    "kind": "在线应用",
+    "title": "Text & Data Cleaner",
+    "desc": "对实际输入文本执行去重、去空行、关键词统计和文件下载。",
+    "href": "lab.html#text",
+    "label": "处理文本",
+    "tags": [
+      "Text",
+      "Cleaning"
+    ],
+    "symbol": "TXT",
+    "bg": "#284857"
+  },
+  {
+    "id": "draw",
+    "cat": "web",
+    "kind": "互动程序",
+    "title": "Random Card Generator",
+    "desc": "可交互随机卡片程序，支持概率权重、连续抽取与本次结果统计。",
+    "href": "lab.html#draw",
+    "label": "运行程序",
+    "tags": [
+      "Random",
+      "State",
+      "UI"
+    ],
+    "symbol": "✦",
+    "bg": "#59485d"
+  },
+  {
+    "id": "api",
+    "cat": "code",
+    "kind": "数据采集脚本",
+    "title": "GitHub API Collector",
+    "desc": "Python 脚本调用官方公开 API，记录项目名称、星标、Fork、语言和更新时间。",
+    "href": "code.html?path=scripts/collect_github_repos.py",
+    "label": "查看源代码",
+    "tags": [
+      "Python",
+      "REST",
+      "JSON"
+    ],
+    "symbol": "</>",
+    "bg": "#355465"
+  },
+  {
+    "id": "analysis",
+    "cat": "code",
+    "kind": "分析脚本",
+    "title": "Repository Metrics Analysis",
+    "desc": "使用 Python 对真实公开数据执行指标汇总、分组统计与结果导出。",
+    "href": "code.html?path=scripts/analyze_github_repos.py",
+    "label": "查看源代码",
+    "tags": [
+      "Python",
+      "Statistics",
+      "JSON"
+    ],
+    "symbol": "∑",
+    "bg": "#455669"
+  }
+];
+const FILTERS=[['all','全部项目'],['data','数据应用'],['crawler','网页采集'],['web','在线工具'],['desktop','桌面应用'],['code','Python 源码']];
 const grid=document.getElementById('project-grid'),filters=document.getElementById('filters');let active='all';
-function render(){filters.innerHTML=FILTERS.map(([id,label])=>`<button type="button" class="filter ${active===id?'active':''}" data-filter="${id}">${label}</button>`).join('');const rows=PROJECTS.filter(p=>active==='all'||p.cat===active);grid.innerHTML=rows.map((p,i)=>`<a class="project-card" href="${p.href}" ${p.external?'target="_blank" rel="noopener"':''} aria-label="${p.title}"><div class="project-art" style="--art-bg:${p.bg}"><span class="tiny-corner">${p.kind}</span><span class="symbol">${p.symbol}</span><span class="number">${String(PROJECTS.indexOf(p)+1).padStart(2,'0')}</span></div><div class="project-info"><div class="project-meta"><span>${p.cat.toUpperCase()}</span><span>VIEW ↗</span></div><h3>${p.title}</h3><p>${p.desc}</p><div class="tagline">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="project-view"><span>${p.label}</span><span>↗</span></div></div></a>`).join('');document.getElementById('project-count').textContent=`当前显示 ${rows.length} / ${PROJECTS.length} 个项目入口`;}
-filters.addEventListener('click',e=>{const b=e.target.closest('button[data-filter]');if(!b)return;active=b.dataset.filter;render();});render();
+if(grid&&filters){function render(){filters.innerHTML=FILTERS.map(([id,label])=>`<button type="button" class="filter ${active===id?'active':''}" data-filter="${id}">${label}</button>`).join('');const rows=PROJECTS.filter(p=>active==='all'||p.cat===active);grid.innerHTML=rows.map(p=>`<a class="project-card" href="${p.href}" ${p.external?'target="_blank" rel="noopener"':''} aria-label="${p.title}"><div class="project-art" style="--art-bg:${p.bg}"><span class="tiny-corner">${p.kind}</span><span class="symbol">${p.symbol}</span><span class="number">${String(PROJECTS.indexOf(p)+1).padStart(2,'0')}</span></div><div class="project-info"><div class="project-meta"><span>${p.cat.toUpperCase()}</span><span>VIEW ↗</span></div><h3>${p.title}</h3><p>${p.desc}</p><div class="tagline">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="project-view"><span>${p.label}</span><span>↗</span></div></div></a>`).join('');const msg=document.getElementById('project-count');if(msg)msg.textContent=`显示 ${rows.length} / ${PROJECTS.length} 个项目`;}
+filters.addEventListener('click',e=>{const b=e.target.closest('button[data-filter]');if(!b)return;active=b.dataset.filter;render()});render();}
