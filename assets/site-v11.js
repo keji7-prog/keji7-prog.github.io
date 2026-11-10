@@ -18,7 +18,7 @@
  if(shareButton){
   const original=shareButton.textContent;
   shareButton.addEventListener('click',async()=>{
-   const link=location.origin+location.pathname+location.search;
+   const link=location.origin+location.pathname+location.search+location.hash;
    try{
     if(!navigator.clipboard?.writeText)throw Error('clipboard unavailable');
     await navigator.clipboard.writeText(link);
