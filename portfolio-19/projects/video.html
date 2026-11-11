@@ -7,7 +7,7 @@
 @media(max-width:1210px){.workspace{grid-template-columns:270px minmax(0,1fr)}.exportpanel{grid-column:1/-1}.exportpanel .panelbody{display:grid;grid-template-columns:1fr 1fr;gap:20px}.stage{min-height:510px}}
 @media(max-width:740px){.shell{padding:0 15px}.topbar{height:65px}.topnav a:first-child{display:none}.intro{padding-top:35px}.intro h1{font-size:43px}.caps{display:none}.workspace{display:flex;flex-direction:column}.stage{min-height:480px;padding:20px 12px}.panelbody{padding:16px}.exportpanel .panelbody{display:block}.playerpanel{order:-1}.canvaswrap{max-width:95%}.intro p{font-size:12px}.playerTop{padding:15px}.time{font-size:10px}.filezone{margin-bottom:9px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
-</style></head>
+</style><link rel="stylesheet" href="../project-nav.css"><link rel="icon" href="../../assets/brand-mark.svg" type="image/svg+xml"><meta property="og:type" content="website"><meta property="og:title" content="FrameLab · JK"><meta property="og:description" content="JK 作品集 · FrameLab：编辑分镜、标题、字幕与画幅，使用自有图片或原创画面导出 WebM。"><meta property="og:image" content="https://keji7-prog.github.io/portfolio-19/assets/covers/video.webp"><meta name="twitter:card" content="summary_large_image"></head>
 <body>
 <header class="shell topbar"><a href="../index.html#work" class="brand"><span class="brandmark">JK</span><span>JK<small>JK / MEDIA EXPERIMENTS</small></span></a><nav class="topnav"><a href="../index.html#work">全部作品</a><a href="#edit">剪辑台</a><a class="btn" href="../index.html">返回作品首页 ↗</a></nav></header>
 <main class="shell"><section class="intro"><div><span class="eye">PROJECT 11 / BROWSER VIDEO STUDIO</span><h1>Frame<em>Lab.</em><br>把故事剪成画面</h1><p>一个真正可操作的浏览器短视频工作台：组合个人照片、标题、色彩和时长，实时预览后导出 WebM。默认样片为原创程序绘制的动态图形，不是从音乐平台采集的音视频。</p></div><div class="caps"><div><b>03</b>演示分镜</div><div><b>30</b>预览 FPS</div><div><b>LOCAL</b>本地处理</div></div></section>
@@ -74,4 +74,4 @@ $('record').onclick=async()=>{if(isRecording)return;if(!window.MediaRecorder||ty
 window.addEventListener('pagehide',()=>{photos.forEach(p=>URL.revokeObjectURL(p.url));if(audioUrl)URL.revokeObjectURL(audioUrl);if(downloadUrl)URL.revokeObjectURL(downloadUrl);cancelAnimationFrame(raf)});
 setRatio('portrait');drawSceneList();
 })();
-</script></body></html>
+</script><script src="../project-nav.js" defer></script></body></html>

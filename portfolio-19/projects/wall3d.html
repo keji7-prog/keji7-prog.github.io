@@ -10,7 +10,7 @@
 @media(max-width:650px){.shell{padding:0 17px}.top{height:66px}.topnav a:nth-child(2){display:none}.hero{padding-top:38px}.hero h1{font-size:39px}.hero p{font-size:12px}.studio{border-radius:16px;margin-top:20px}.scene{height:350px;perspective:780px}.frame{--w:138px;height:208px;top:-104px;border-width:4px}.frame img{height:154px}.frame .caption{height:51px;padding:8px}.stagehead{left:14px;top:17px}.stagebottom{padding:12px;flex-wrap:wrap}.stagecontrol{order:1}.namebox{order:0;flex-basis:100%}.zoombox{order:2;margin-left:auto}.zoombox input{width:65px}.gallerytools{flex:1}.thumbgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.thumb img{height:130px}.legal{flex-direction:column}.toolbar{padding:17px 0}.pill{padding:10px 12px;font-size:11px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 </style>
-</head>
+<link rel="stylesheet" href="../project-nav.css"><link rel="icon" href="../../assets/brand-mark.svg" type="image/svg+xml"><meta property="og:type" content="website"><meta property="og:title" content="Memory Orbit · JK"><meta property="og:description" content="JK 作品集 · Memory Orbit：三维环绕照片展厅，可旋转、缩放、全屏浏览并导入自己的影像。"><meta property="og:image" content="https://keji7-prog.github.io/portfolio-19/assets/covers/wall3d.webp"><meta name="twitter:card" content="summary_large_image"></head>
 <body>
 <header class="shell top"><a class="brand" href="../index.html#work"><span class="mark">JK</span><span>JK<small>JK / CREATIVE LAB</small></span></a><nav class="topnav"><a href="../index.html#work">全部作品</a><a href="#collection">图像收藏</a><a class="pill" href="../index.html">作品首页 ↗</a></nav></header>
 <main>
@@ -48,4 +48,4 @@ $('grid-toggle').onclick=()=>{isGrid=!isGrid;$('grid-toggle').textContent=isGrid
 window.addEventListener('pagehide',()=>activeObjects.forEach(u=>URL.revokeObjectURL(u)));build();
 })();
 </script>
-</body></html>
+<script src="../project-nav.js" defer></script></body></html>
