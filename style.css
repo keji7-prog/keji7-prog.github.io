@@ -1,4 +1,4 @@
-/* Keji Yin — independently authored light, minimal portfolio styling. */
+/* JK — independently authored light, minimal portfolio styling. */
 :root{--bg:#f6f8fa;--paper:#fff;--paper2:#f0f5f6;--text:#162129;--dim:#637483;--soft:#8d9ca6;--line:#dde5e9;--primary:#087f9b;--bright:#00a4b8;--pale:#e5f4f6;--shadow:0 12px 34px rgba(35,65,85,.055);color-scheme:light}
 :root[data-theme="dark"]{--bg:#111a20;--paper:#19252b;--paper2:#1f3036;--text:#e9f2f3;--dim:#a8bdc5;--soft:#8ca4ad;--line:#31454d;--primary:#54b8cb;--bright:#73d1de;--pale:#1c3640;--shadow:0 10px 30px rgba(0,0,0,.17);color-scheme:dark}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;font-family:Inter,"Noto Sans SC","Microsoft YaHei","PingFang SC",system-ui,-apple-system,sans-serif;line-height:1.65;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;background-image:radial-gradient(ellipse 900px 500px at 86% 0%,rgba(2,150,170,.065),transparent 68%),radial-gradient(ellipse 750px 650px at 3% 80%,rgba(65,135,175,.045),transparent 75%)}

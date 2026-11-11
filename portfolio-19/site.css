@@ -31,3 +31,23 @@
 .preview--housing .pv-widget i{background:#a5eccd}.preview--freelance .pv-widget i{background:#b7eae0}
 .preview--tribute .pv-rim{border-radius:50% 50% 14px 14px;background:linear-gradient(150deg,#e78b96,#ffe3ac)}
 .preview--engagement .pv-rim{border-radius:9px;background:repeating-linear-gradient(#f4ffff 0 11px,#a9ded7 12px,#f4ffff 14px)}
+
+/* JK 2026: genuine application screenshots instead of repeated schematic charts */
+.heroShowcase{display:grid;grid-template-columns:1.55fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:13px;height:382px;min-width:0}
+.heroShot{position:relative;display:block;overflow:hidden;border:1px solid #dbe5e7;border-radius:15px;background:#dee9eb;box-shadow:0 13px 34px #12354317;min-width:0}
+.heroShot--main{grid-row:span 2}
+.heroShot img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .35s}
+.heroShot:hover img{transform:scale(1.035)}
+.heroShot span{position:absolute;bottom:0;inset-inline:0;padding:33px 15px 12px;background:linear-gradient(transparent,#102734ca);color:#fff;font-weight:700;font-size:12px}
+.thumb{padding:0;height:auto;aspect-ratio:1.6;background:#e7eeef!important}
+.thumb .actual-cover{display:block;width:100%;height:100%;object-fit:cover;transition:transform .42s ease;filter:saturate(.96)}
+.card:hover .actual-cover{transform:scale(1.055);filter:saturate(1.04)}
+.thumbLabel{top:12px;right:13px;z-index:2;background:#ffffffea;color:#2a4654;font-size:10px;box-shadow:0 2px 10px #00000010}
+.card{border-radius:13px;box-shadow:0 5px 22px #16445a08}
+.cardBody{padding:18px 19px 19px}
+.card p{min-height:55px;margin:10px 0 0}
+.card h3{font-size:17px;margin:8px 0 4px}
+.cardFoot{margin-top:14px;padding-top:12px}
+.actual-cover.cover-unavailable{opacity:0}
+@media(max-width:900px){.heroShowcase{height:310px;max-width:750px}}
+@media(max-width:620px){.heroShowcase{height:260px;gap:8px}.heroShot{border-radius:10px}.heroShot span{font-size:10px;padding:22px 8px 8px}}

@@ -1,6 +1,6 @@
-/* Public content for Keji Yin's portfolio — no private account or raw listing data. */
+/* Public content for JK's portfolio — no private account or raw listing data. */
 window.KEJI_PORTFOLIO = {
-  name: '尹可济', englishName: 'Keji Yin', initials: 'KJ',
+  name: 'JK', englishName: 'JK', initials: 'JK',
   headline: 'Data Analysis · Python · Interactive Systems',
   summary: '从真实的数据与业务问题出发，把采集、分析和代码变成可以探索、可以操作的作品。',
   about: '商业信息系统背景，关注数据如何支持判断、流程如何通过自动化改进，以及技术如何转化为直观的用户体验。作品覆盖公开数据分析、浏览器采集、Python 桌面工具与交互式网页应用。',
