@@ -24,3 +24,13 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}button,a
 .project-card:hover h3,.project-card:focus-visible h3{color:var(--primary)}
 .project-card:hover .project-arrow,.project-card:focus-visible .project-arrow{background:var(--primary);color:#fff}
 @media (prefers-reduced-motion:reduce){.project-card,.project-cover img{transition:none!important}.project-card:hover,.project-card:focus-visible{transform:none}}
+
+/* Connect original nine-project portfolio to JK's interactive nineteen-project exhibition */
+.full-gallery-banner{display:flex;align-items:center;justify-content:space-between;gap:26px;background:linear-gradient(105deg,#173c47,#1b6869);color:#f1faf8;border-radius:20px;padding:35px 42px;margin-bottom:85px}
+.full-gallery-banner span{font-size:10px;letter-spacing:.16em;color:#a5ddd7;font-weight:800}
+.full-gallery-banner h2{font-size:clamp(23px,3vw,34px);line-height:1.3;letter-spacing:-.03em;margin:11px 0 7px}
+.full-gallery-banner p{font-size:13px;line-height:1.75;max-width:650px;color:#d2e7e7;margin:0}
+.full-gallery-banner a{padding:13px 18px;background:#edf8f5;color:#16444b;border-radius:10px;text-decoration:none;font-size:13px;font-weight:800;white-space:nowrap}
+.full-gallery-banner a:hover{background:white}
+.full-gallery-banner a:focus-visible{outline:3px solid #a2e5d4;outline-offset:4px}
+@media(max-width:700px){.full-gallery-banner{display:block;padding:27px 22px;margin-bottom:65px}.full-gallery-banner a{display:inline-flex;margin-top:19px;white-space:normal}}

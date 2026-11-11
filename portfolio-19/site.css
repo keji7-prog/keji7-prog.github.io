@@ -51,3 +51,22 @@
 .actual-cover.cover-unavailable{opacity:0}
 @media(max-width:900px){.heroShowcase{height:310px;max-width:750px}}
 @media(max-width:620px){.heroShowcase{height:260px;gap:8px}.heroShot{border-radius:10px}.heroShot span{font-size:10px;padding:22px 8px 8px}}
+
+/* 2026-11: project search, sorting and purposeful browsing */
+.browse-tools{display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:15px}
+.browse-tools .filters{margin:0}
+.browse-controls{display:flex;align-items:center;gap:9px;flex:1;justify-content:flex-end}
+.search-field{height:42px;display:flex;align-items:center;gap:8px;border:1px solid #d6e2e4;background:#fff;border-radius:11px;padding:0 12px;min-width:195px;max-width:300px;flex:1;color:#58827f}
+.search-field:focus-within{border-color:#19998b;box-shadow:0 0 0 3px #139b871c}
+.search-field input{width:100%;min-width:0;border:0;outline:0;font:inherit;font-size:12px;background:transparent;color:#24404b}
+.project-sort,.clear-filters{height:42px;border:1px solid #d6e2e4;border-radius:11px;background:#fff;color:#3f6070;font:inherit;font-size:12px;padding:0 11px}
+.clear-filters{cursor:pointer;font-weight:700}
+.clear-filters:hover{background:#e8f4f0}
+.browse-summary{min-height:20px;margin:0 0 17px;color:#66818a;font-size:12px}
+.project-empty{padding:30px;border:1px dashed #afc6c8;background:#eef5f4;border-radius:14px;text-align:center;color:#536e78;font-size:13px}
+.project-empty[hidden]{display:none}
+.card:focus-visible,.heroShot:focus-visible{outline:3px solid #169b8e;outline-offset:4px}
+html{scroll-padding-top:92px}
+@media(max-width:1100px){.browse-controls{justify-content:flex-start;flex-basis:100%}}
+@media(max-width:620px){.browse-tools{gap:12px}.browse-controls{flex-wrap:wrap}.search-field{min-width:100%;max-width:100%}.project-sort,.clear-filters{flex:1}.filter{padding:9px 13px}.hero h1{font-size:clamp(38px,10vw,58px)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}

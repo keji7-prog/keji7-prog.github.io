@@ -43,7 +43,30 @@ function rap(){const lines=["数据来自现实，结论需要证据。","代码
 function tribute(){set('<div class="fields"><input id="gift-to" class="field" placeholder="收件人名称"><input id="gift-message" class="field" value="愿每一天都有值得珍藏的小惊喜"></div><label for="gift-image" class="btn">选择自己的照片</label><input id="gift-image" type="file" accept="image/*" hidden><div class="quote" id="gift-preview" style="margin-top:22px">愿每一天都有值得珍藏的小惊喜</div>');const draw=()=>{id("gift-preview").textContent=(id("gift-to").value?"致 "+id("gift-to").value+"\n":"")+id("gift-message").value};id("gift-to").oninput=draw;id("gift-message").oninput=draw;id("gift-image").onchange=e=>{const f=e.target.files?.[0];if(!f)return;const img=new Image();img.src=URL.createObjectURL(f);img.className="thumbMini";id("gift-preview").appendChild(img)}}
 function coverFor(p){const name=encodeURIComponent(p.id);return '<img class="actual-cover" src="assets/covers/'+name+'.webp" alt="'+esc(p.cn)+' · 项目专属展示封面" loading="lazy" decoding="async" onerror="this.classList.add(\'cover-unavailable\')">'}
 
-function home(){id("landing").classList.remove("hidden");id("detail").classList.add("hidden");const grid=id("cards"),paths={data:"数据与采集",tool:"实际应用",creative:"创意体验"};const show=cat=>{const arr=P.filter(p=>cat==="all"||p.cat===cat);grid.innerHTML=arr.map((p,i)=>'<a class="card" href="projects/'+p.id+'.html"><div class="thumb" data-cat="'+p.cat+'"><span class="thumbLabel">'+esc(p.icon)+' / '+esc(p.type)+'</span>'+coverFor(p)+'</div><div class="cardBody"><span class="num">'+String(i+1).padStart(2,"0")+' / '+paths[p.cat]+'</span><h3>'+esc(p.en)+'</h3><span class="cn">'+esc(p.cn)+'</span><p>'+esc(p.desc)+'</p><div class="cardFoot"><span>'+esc(p.type)+'</span><b>↗</b></div></div></a>').join("");id("count").textContent=arr.length+" PROJECTS";};document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-filter]").forEach(x=>x.classList.remove("active"));b.classList.add("active");show(b.dataset.filter)});show("all")}
+function home(){
+ id("landing").classList.remove("hidden");id("detail").classList.add("hidden");
+ const grid=id("cards"),search=id("project-search"),sort=id("project-sort"),clear=id("project-clear"),empty=id("project-empty"),summary=id("browse-summary");
+ const categoryNames={data:"数据与采集",tool:"应用工具",creative:"创意互动"};
+ const filters=[...document.querySelectorAll("[data-filter]")];let category="all";
+ const render=()=>{
+  const needle=(search.value||"").trim().toLocaleLowerCase();
+  const arr=P.filter(p=>(category==="all"||p.cat===category)&&(!needle||[p.cn,p.en,p.desc,p.type,p.source,categoryNames[p.cat]].join(" ").toLocaleLowerCase().includes(needle)));
+  if(sort.value==="alpha")arr.sort((x,y)=>x.en.localeCompare(y.en,"en"));
+  if(sort.value==="reverse")arr.reverse();
+  grid.innerHTML=arr.map((p)=>{
+   const no=String(P.indexOf(p)+1).padStart(2,"0");
+   return '<a class="card" href="projects/'+p.id+'.html" aria-label="打开 '+esc(p.cn)+' 项目详情"><div class="thumb" data-cat="'+p.cat+'"><span class="thumbLabel">'+esc(p.type)+'</span>'+coverFor(p)+'</div><div class="cardBody"><span class="num">'+no+' / '+categoryNames[p.cat]+'</span><h3>'+esc(p.en)+'</h3><span class="cn">'+esc(p.cn)+'</span><p>'+esc(p.desc)+'</p><div class="cardFoot"><span>'+esc(p.type)+'</span><b aria-hidden="true">↗</b></div></div></a>';
+  }).join("");
+  id("count").textContent=arr.length+" / "+P.length+" PROJECTS";
+  summary.textContent=arr.length===P.length?"19 个独立应用 · 点击卡片进入实际项目":"正在显示 "+arr.length+" / "+P.length+" 个项目";
+  empty.hidden=arr.length!==0;
+ };
+ filters.forEach(btn=>btn.addEventListener("click",()=>{category=btn.dataset.filter;filters.forEach(f=>{const active=f===btn;f.classList.toggle("active",active);f.setAttribute("aria-pressed",String(active))});render()}));
+ search.addEventListener("input",render);sort.addEventListener("change",render);
+ clear.addEventListener("click",()=>{category="all";search.value="";sort.value="original";filters.forEach(f=>{const active=f.dataset.filter==="all";f.classList.toggle("active",active);f.setAttribute("aria-pressed",String(active))});render();search.focus()});
+ render();
+}
+
 function detail(p){id("landing").classList.add("hidden");id("detail").classList.remove("hidden");document.title=p.cn+" · JK";id("d-title").textContent=p.en;id("d-cn").textContent=p.cn;id("d-desc").textContent=p.desc;id("d-status").textContent=p.type;id("d-status").classList.toggle("import",p.type.includes("待"));id("d-caveat").textContent=p.limit;id("d-provenance").textContent=p.source;const i=P.indexOf(p),next=P[(i+1)%P.length],prev=P[(i+P.length-1)%P.length];id("d-next").href=next.id+".html";id("d-prev").href=prev.id+".html";id("d-next").textContent="下一个："+next.cn+" →";id("d-prev").textContent="← 上一个："+prev.cn;
 switch(p.id){case "gpu":case "freelance":case "monitor":case "csv":csvTool(p);break;case "housing":housing();break;case "notes-feed":notes();break;case "wheel":randomGame(true);break;case "gacha":randomGame(false);break;case "affinity":affinity();break;case "zodiac":zodiac();break;case "gallery":gallery(false);break;case "wall3d":gallery(true);break;case "music":music();break;case "video":video();break;case "rap":rap();break;case "engagement":checklist();break;case "editor":editor();break;case "ai":workflow();break;case "tribute":tribute();break;default:set('<div class="empty">本项目工作台正在整理。</div>');}}
 const p=P.find(x=>x.id===document.body.dataset.project);p?detail(p):home();
