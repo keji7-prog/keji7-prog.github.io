@@ -1,0 +1,21 @@
+/* JK portfolio: shared navigation layer; isolated from each project's own visual system */
+.jk-hub,.jk-hub *{box-sizing:border-box}
+.jk-hub{position:relative;z-index:1100;width:100%;background:#122936;color:#e7f4f5;border-bottom:1px solid #ffffff22;font-family:Inter,system-ui,-apple-system,"PingFang SC","Microsoft Yahei",sans-serif!important;box-shadow:0 3px 16px #102b3411}
+.jk-hub-inner{width:min(1280px,calc(100% - 40px));min-height:52px;margin:auto;display:flex;align-items:center;gap:17px}
+.jk-hub a,.jk-hub select{font:inherit;color:inherit;text-decoration:none!important}
+.jk-hub-brand{display:inline-flex;gap:9px;align-items:center;white-space:nowrap;font-size:12px;font-weight:750;color:#fff!important}
+.jk-hub-brand b{font-size:15px;letter-spacing:-.06em;background:#e3f1ed;color:#173b44;border-radius:8px;padding:5px 7px}
+.jk-hub-current{display:flex;align-items:center;gap:8px;min-width:0;flex:1;font-size:12px;color:#c0d9db}
+.jk-hub-current strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;color:#f3faf9}
+.jk-hub-index{font-size:10px;letter-spacing:.09em;color:#a6c4c6;white-space:nowrap}
+.jk-hub-tools{display:flex;align-items:center;gap:7px}
+.jk-hub-navselect{border:1px solid #56717b!important;border-radius:8px;background:#1d3948!important;padding:7px 25px 7px 9px;color:#fff!important;font-size:11px!important;max-width:200px;min-width:0}
+.jk-hub-navselect option{color:#12303c;background:#fff}
+.jk-hub-btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid #496b76!important;border-radius:8px;padding:7px 10px;font-size:11px!important;font-weight:700;background:#183b49;color:#e8f8f7!important;white-space:nowrap;min-height:30px;line-height:1.2}
+.jk-hub-btn:hover{background:#2b5964}
+.jk-hub-btn:focus-visible,.jk-hub-navselect:focus-visible,.jk-hub-brand:focus-visible{outline:3px solid #79dccf;outline-offset:3px}
+.jk-hub-btn--all{background:#e8f4f0;color:#143844!important;border-color:#e8f4f0!important}
+.jk-hub-btn--all:hover{background:white}
+@media(max-width:720px){.jk-hub-inner{width:calc(100% - 28px);gap:9px;min-height:55px}.jk-hub-current{display:none}.jk-hub-tools{flex:1;justify-content:flex-end}.jk-hub-navselect{max-width:min(42vw,160px)}.jk-hub-btn{padding:7px 8px}}
+@media(max-width:400px){.jk-hub-btn--all{font-size:0!important}.jk-hub-btn--all:after{content:"全部";font-size:11px}}
+@media(prefers-reduced-motion:reduce){.jk-hub *{scroll-behavior:auto}}
