@@ -74,7 +74,7 @@ document.querySelectorAll("[data-record-case]").forEach(btn=>btn.addEventListene
  $("real-search").value="";render();
 }));
 $("record-export").addEventListener("click",csvDownload);
-fetch("../data/housing_original_listings_2026-11-10.json",{cache:"no-store"}).then(res=>{if(!res.ok)throw Error("HTTP "+res.status);return res.json()}).then(obj=>{
+fetch(new URL("../data/housing_original_listings_2026-11-10.json",document.currentScript.src),{cache:"no-store"}).then(res=>{if(!res.ok)throw Error("HTTP "+res.status);return res.json()}).then(obj=>{
  if(!Array.isArray(obj.rows)||obj.rows.length!==30||obj.columns?.length!==13||new Set(obj.rows.map(x=>x["详情网址"])).size!==30)throw Error("原始记录缺失或重复");
  if(obj.rows.some(r=>Object.keys(r).length!==13))throw Error("字段数不完整");
  data=obj;
