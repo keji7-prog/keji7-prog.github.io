@@ -4,7 +4,7 @@ const $=id=>document.getElementById(id);
 const esc=value=>String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
 const fmt=(v,dp=0)=>Number(v).toLocaleString("zh-CN",{maximumFractionDigits:dp});
 const median=arr=>{const a=arr.filter(Number.isFinite).sort((x,y)=>x-y);return a.length?(a[Math.floor((a.length-1)/2)]+a[Math.floor(a.length/2)])/2:NaN};
-let data=null,shown=[],state={keyword:"",room:"all",max:"all",minArea:0,sort:"original"};
+let data=null,shown=[],state={keyword:"",room:"all",max:"all",minArea:0,minRooms:0,sort:"original"};
 function roomOf(row){return Number(row["描述"].match(/([1-9])室/)?.[1]||0)}
 function areaOf(row){const m=row["描述"].match(/(\d+(?:\.\d+)?)平米/);return m?Number(m[1]):NaN}
 function attentionOf(row){return Number(row["关注度"].match(/(\d+)人关注/)?.[1]||0)}
@@ -16,6 +16,7 @@ function compute(){
  if(q&&![row["标题"],row["地址"],row["描述"]].some(v=>String(v).toLocaleLowerCase("zh-CN").includes(q)))return false;
  if(state.room!=="all"&&roomOf(row)!==Number(state.room))return false;
  if(state.max!=="all"&&moneyOf(row)>Number(state.max))return false;
+ if(state.minRooms&&roomOf(row)<state.minRooms)return false;
  return !state.minArea||areaOf(row)>=state.minArea;
  });
  const order=state.sort;
@@ -43,7 +44,7 @@ function card(row){
 function updatePresets(){
  document.querySelectorAll("[data-record-case]").forEach(btn=>{
  const k=btn.dataset.recordCase;
- const same=k==="all"?state.room==="all"&&state.max==="all"&&!state.minArea:k==="budget"?state.room==="all"&&state.max==="300"&&!state.minArea:k==="two"?state.room==="2"&&state.max==="500"&&!state.minArea:state.room==="all"&&state.max==="all"&&state.minArea===100;
+ const same=k==="all"?state.room==="all"&&state.max==="all"&&!state.minArea:k==="budget"?state.room==="all"&&state.max==="300"&&!state.minArea:k==="two"?state.room==="2"&&state.max==="500"&&!state.minArea:state.room==="all"&&state.max==="all"&&state.minArea===100&&state.minRooms===3;
  btn.classList.toggle("selected",same);btn.setAttribute("aria-pressed",String(same));
  });
 }
@@ -66,11 +67,11 @@ function csvDownload(){
  a.href=u;a.download="JK-Beijing-housing-original-fields-2026-11-10.csv";a.click();setTimeout(()=>URL.revokeObjectURL(u),1500);
 }
 $("real-search").addEventListener("input",e=>{state.keyword=e.target.value;render()});
-$("real-room").addEventListener("change",e=>{state.room=e.target.value;state.minArea=0;render()});
-$("real-max").addEventListener("change",e=>{state.max=e.target.value;state.minArea=0;render()});
+$("real-room").addEventListener("change",e=>{state.room=e.target.value;state.minArea=0;state.minRooms=0;render()});
+$("real-max").addEventListener("change",e=>{state.max=e.target.value;state.minArea=0;state.minRooms=0;render()});
 $("real-sort").addEventListener("change",e=>{state.sort=e.target.value;render()});
 document.querySelectorAll("[data-record-case]").forEach(btn=>btn.addEventListener("click",()=>{
- const k=btn.dataset.recordCase;state.keyword="";state.room=k==="two"?"2":"all";state.max=k==="budget"?"300":k==="two"?"500":"all";state.minArea=k==="large"?100:0;
+ const k=btn.dataset.recordCase;state.keyword="";state.room=k==="two"?"2":"all";state.max=k==="budget"?"300":k==="two"?"500":"all";state.minArea=k==="large"?100:0;state.minRooms=k==="large"?3:0;
  $("real-search").value="";render();
 }));
 $("record-export").addEventListener("click",csvDownload);
