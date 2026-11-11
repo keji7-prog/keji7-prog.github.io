@@ -1,0 +1,315 @@
+{
+  "kind": "Anonymised numeric field projection — NOT the full raw listing dataset",
+  "provenance": {
+    "source": "https://bj.ke.com/ershoufang/",
+    "capturedAt": "2026-11-10T13:17:11+08:00",
+    "records": 30,
+    "originalFields": 13,
+    "uniqueOriginalDetailUrls": 30,
+    "imageUrlsArePlaceholders": 30,
+    "originalCsvSHA256": "c112a612403a6eb41e8045b32f918b074ba1946d4f5d857ad66617b9f360fa60",
+    "note": "Only numeric and nonidentifying derived observations are public; titles, street/community names, full descriptions, specific listing URLs and images remain in the private archive."
+  },
+  "rows": [
+    {
+      "id": "H01",
+      "room": 1,
+      "area": 58.26,
+      "totalWan": 132,
+      "unitYuan": 22658,
+      "floor": "中楼层",
+      "year": 2006,
+      "attention": 37
+    },
+    {
+      "id": "H02",
+      "room": 2,
+      "area": 83.02,
+      "totalWan": 288,
+      "unitYuan": 34691,
+      "floor": "底层",
+      "year": null,
+      "attention": 103
+    },
+    {
+      "id": "H03",
+      "room": 2,
+      "area": 56.2,
+      "totalWan": 560,
+      "unitYuan": 99645,
+      "floor": "低楼层",
+      "year": 1991,
+      "attention": 15
+    },
+    {
+      "id": "H04",
+      "room": 2,
+      "area": 58.08,
+      "totalWan": 174,
+      "unitYuan": 29959,
+      "floor": "顶层",
+      "year": 1990,
+      "attention": 90
+    },
+    {
+      "id": "H05",
+      "room": 2,
+      "area": 106.1,
+      "totalWan": 320,
+      "unitYuan": 30161,
+      "floor": "中楼层",
+      "year": 2001,
+      "attention": 78
+    },
+    {
+      "id": "H06",
+      "room": 1,
+      "area": 44.9,
+      "totalWan": 440,
+      "unitYuan": 97996,
+      "floor": "底层",
+      "year": null,
+      "attention": 39
+    },
+    {
+      "id": "H07",
+      "room": 2,
+      "area": 69.87,
+      "totalWan": 210,
+      "unitYuan": 30056,
+      "floor": "地下室",
+      "year": 1997,
+      "attention": 79
+    },
+    {
+      "id": "H08",
+      "room": 2,
+      "area": 100.29,
+      "totalWan": 550,
+      "unitYuan": 54841,
+      "floor": "高楼层",
+      "year": 2006,
+      "attention": 78
+    },
+    {
+      "id": "H09",
+      "room": 2,
+      "area": 103.78,
+      "totalWan": 758,
+      "unitYuan": 73040,
+      "floor": "低楼层",
+      "year": 2003,
+      "attention": 136
+    },
+    {
+      "id": "H10",
+      "room": 2,
+      "area": 126.08,
+      "totalWan": 690,
+      "unitYuan": 54728,
+      "floor": "中楼层",
+      "year": 2008,
+      "attention": 118
+    },
+    {
+      "id": "H11",
+      "room": 2,
+      "area": 72.72,
+      "totalWan": 495,
+      "unitYuan": 68070,
+      "floor": "中楼层",
+      "year": null,
+      "attention": 201
+    },
+    {
+      "id": "H12",
+      "room": 3,
+      "area": 154.79,
+      "totalWan": 1260,
+      "unitYuan": 81401,
+      "floor": "中楼层",
+      "year": null,
+      "attention": 76
+    },
+    {
+      "id": "H13",
+      "room": 3,
+      "area": 129.77,
+      "totalWan": 585,
+      "unitYuan": 45080,
+      "floor": "高楼层",
+      "year": 2006,
+      "attention": 195
+    },
+    {
+      "id": "H14",
+      "room": 3,
+      "area": 95.71,
+      "totalWan": 139,
+      "unitYuan": 14524,
+      "floor": "中楼层",
+      "year": 2016,
+      "attention": 128
+    },
+    {
+      "id": "H15",
+      "room": 3,
+      "area": 119.83,
+      "totalWan": 255,
+      "unitYuan": 21281,
+      "floor": "高楼层",
+      "year": null,
+      "attention": 48
+    },
+    {
+      "id": "H16",
+      "room": 3,
+      "area": 130.25,
+      "totalWan": 1050,
+      "unitYuan": 80615,
+      "floor": "中楼层",
+      "year": 2024,
+      "attention": 205
+    },
+    {
+      "id": "H17",
+      "room": 4,
+      "area": 186.76,
+      "totalWan": 632,
+      "unitYuan": 33841,
+      "floor": "中楼层",
+      "year": null,
+      "attention": 106
+    },
+    {
+      "id": "H18",
+      "room": 3,
+      "area": 136.38,
+      "totalWan": 1200,
+      "unitYuan": 87990,
+      "floor": "中楼层",
+      "year": null,
+      "attention": 61
+    },
+    {
+      "id": "H19",
+      "room": 3,
+      "area": 101.83,
+      "totalWan": 420,
+      "unitYuan": 41246,
+      "floor": "中楼层",
+      "year": null,
+      "attention": 84
+    },
+    {
+      "id": "H20",
+      "room": 2,
+      "area": 82.91,
+      "totalWan": 240,
+      "unitYuan": 28948,
+      "floor": "中楼层",
+      "year": null,
+      "attention": 86
+    },
+    {
+      "id": "H21",
+      "room": 1,
+      "area": 63.26,
+      "totalWan": 430,
+      "unitYuan": 67974,
+      "floor": "高楼层",
+      "year": 2003,
+      "attention": 40
+    },
+    {
+      "id": "H22",
+      "room": 2,
+      "area": 60.43,
+      "totalWan": 360,
+      "unitYuan": 59574,
+      "floor": "低楼层",
+      "year": 1996,
+      "attention": 159
+    },
+    {
+      "id": "H23",
+      "room": 2,
+      "area": 82.07,
+      "totalWan": 236,
+      "unitYuan": 28756,
+      "floor": "底层",
+      "year": 2013,
+      "attention": 248
+    },
+    {
+      "id": "H24",
+      "room": 2,
+      "area": 72.4,
+      "totalWan": 608,
+      "unitYuan": 83978,
+      "floor": "中楼层",
+      "year": null,
+      "attention": 33
+    },
+    {
+      "id": "H25",
+      "room": 2,
+      "area": 93.59,
+      "totalWan": 545,
+      "unitYuan": 58233,
+      "floor": "高楼层",
+      "year": null,
+      "attention": 59
+    },
+    {
+      "id": "H26",
+      "room": 3,
+      "area": 120.34,
+      "totalWan": 159,
+      "unitYuan": 13213,
+      "floor": "中楼层",
+      "year": 2015,
+      "attention": 67
+    },
+    {
+      "id": "H27",
+      "room": 1,
+      "area": 41.3,
+      "totalWan": 245,
+      "unitYuan": 59323,
+      "floor": "中楼层",
+      "year": null,
+      "attention": 33
+    },
+    {
+      "id": "H28",
+      "room": 1,
+      "area": 52.66,
+      "totalWan": 375,
+      "unitYuan": 71212,
+      "floor": "中楼层",
+      "year": 2006,
+      "attention": 19
+    },
+    {
+      "id": "H29",
+      "room": 3,
+      "area": 165.94,
+      "totalWan": 1900,
+      "unitYuan": 114500,
+      "floor": "低楼层",
+      "year": null,
+      "attention": 121
+    },
+    {
+      "id": "H30",
+      "room": 1,
+      "area": 41.76,
+      "totalWan": 385,
+      "unitYuan": 92194,
+      "floor": "高楼层",
+      "year": 1993,
+      "attention": 13
+    }
+  ]
+}
