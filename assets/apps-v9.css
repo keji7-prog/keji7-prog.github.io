@@ -1,4 +1,4 @@
-/* Keji Yin / Applications: shares V7/V8 color tokens and spacing. */
+/* JK / Applications: shares V7/V8 color tokens and spacing. */
 .v9-header{position:sticky;top:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--line)}
 .v9-header .v9-bar{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .v9-brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:.09em;white-space:nowrap}
