@@ -1,6 +1,6 @@
 window.PORTFOLIO_DATA = {
   "profile": {
-    "name": "Keji Yin",
+    "name": "JK",
     "subtitle": "Python · Data · AI Workflows",
     "degree": "Business Information Systems / Business Management",
     "githubUsername": "keji7-prog",
