@@ -19,3 +19,6 @@
 @media(max-width:720px){.jk-hub-inner{width:calc(100% - 28px);gap:9px;min-height:55px}.jk-hub-current{display:none}.jk-hub-tools{flex:1;justify-content:flex-end}.jk-hub-navselect{max-width:min(42vw,160px)}.jk-hub-btn{padding:7px 8px}}
 @media(max-width:400px){.jk-hub-btn--all{font-size:0!important}.jk-hub-btn--all:after{content:"全部";font-size:11px}}
 @media(prefers-reduced-motion:reduce){.jk-hub *{scroll-behavior:auto}}
+
+.jk-hub-evidence{border-color:#91d6be!important;color:#cbefdd!important;background:#204f52!important}.jk-hub-evidence:hover{background:#2f6b64!important}
+@media(max-width:720px){.jk-hub-evidence{padding:7px 7px;font-size:10px!important}}

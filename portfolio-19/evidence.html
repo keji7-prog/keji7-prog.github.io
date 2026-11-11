@@ -91,7 +91,7 @@ function uniqueRows(source,raw){
  if(source==="housing")return raw.rows;
  if(source==="github")return raw.records;
  if(source==="gpu")return [...embedded.gpu.msrp.map(x=>({type:"MSRP 起售价",name:x.model,brand:"NVIDIA",model:x.model,memory:x.memory,price:x.price,src:x.src})),...embedded.gpu.listings.map(x=>({...x,type:"Marketplace 目录标价"}))];
- if(source==="monitor")return embedded.monitor.observations.map(x=>({product:embedded.monitor.products.find(p=>p.sku===x.sku)?.name||x.sku,...x}));
+ if(source==="monitor")return embedded.monitor.observations.map(x=>({product:embedded.monitor.products.find(p=>p.id===x.sku)?.name||x.sku,...x}));
  return [];
 }
 function columns(){const spec=specs[source];$("thead").innerHTML="<tr>"+spec.labels.map((x,i)=>"<th>"+esc(x)+"</th>").join("")+"</tr>"}
@@ -116,9 +116,10 @@ const sort=$("sort");sort.innerHTML='<option value="">原始观察顺序</option
 $("query").addEventListener("input",render);$("sort").addEventListener("change",e=>{field=e.target.value;render()});
 $("order").addEventListener("click",()=>{asc=!asc;$("order").textContent=asc?"升序 ↑":"降序 ↓";render()});
 $("reset").addEventListener("click",()=>{$("query").value="";field="";$("sort").value="";asc=true;$("order").textContent="升序 ↑";render()});
-document.querySelectorAll("[data-source]").forEach(b=>b.addEventListener("click",()=>apply(b.dataset.source)));
+document.querySelectorAll("[data-source]").forEach(b=>b.addEventListener("click",()=>{location.hash=b.dataset.source;apply(b.dataset.source)}));
+window.addEventListener("hashchange",()=>{const name=location.hash.slice(1);if(specs[name]&&catalog[name])apply(name)});
 $("download").addEventListener("click",()=>{const keys=specs[source].columns,heads=specs[source].labels,text="\uFEFF"+[heads,...list.map(row=>keys.map(k=>row[k]??""))].map(row=>row.map(csvSafe).join(",")).join("\r\n");const u=URL.createObjectURL(new Blob([text],{type:"text/csv;charset=utf-8"})),link=document.createElement("a");link.href=u;link.download="JK-evidence-"+source+"-records.csv";link.click();setTimeout(()=>URL.revokeObjectURL(u),1000)});
 Promise.all([fetch("data/housing_numeric_sample_2026-11-10.json").then(r=>{if(!r.ok)throw Error("房源公开数据 HTTP "+r.status);return r.json()}),fetch("../data/github_repos_snapshot.json").then(r=>{if(!r.ok)throw Error("GitHub 数据 HTTP "+r.status);return r.json()})]).then(([housing,github])=>{if(housing.rows?.length!==30||github.records?.length!==12||embedded.gpu.msrp?.length!==8||embedded.gpu.listings?.length!==16||embedded.monitor.observations?.length!==5)throw Error("归档数据完整性检查未通过");
-catalog={housing:uniqueRows("housing",housing),github:uniqueRows("github",github),gpu:uniqueRows("gpu"),monitor:uniqueRows("monitor")};apply("housing")}).catch(e=>{$("source-name").textContent="无法读取数据来源";$("source-description").textContent=String(e.message);$("tbody").innerHTML='<tr><td>未加载任何虚构的替代数字，请检查网络与部署。</td></tr>'});
+catalog={housing:uniqueRows("housing",housing),github:uniqueRows("github",github),gpu:uniqueRows("gpu"),monitor:uniqueRows("monitor")};apply(specs[location.hash.slice(1)]?location.hash.slice(1):"housing")}).catch(e=>{$("source-name").textContent="无法读取数据来源";$("source-description").textContent=String(e.message);$("tbody").innerHTML='<tr><td>未加载任何虚构的替代数字，请检查网络与部署。</td></tr>'});
 })();
 </script></body></html>

@@ -5,12 +5,15 @@ const index=items.findIndex(item=>item[0]===page);
 if(index<0||!document.body)return;
 const entry=items[index],prior=items[(index+items.length-1)%items.length],next=items[(index+1)%items.length];
 const bar=document.createElement("nav");bar.className="jk-hub";bar.setAttribute("aria-label","JK 作品集项目导航");
-bar.innerHTML='<div class="jk-hub-inner"><a class="jk-hub-brand" href="../index.html#work" aria-label="返回 JK 作品集首页"><b>JK.</b><span>INTERACTIVE WORK</span></a><div class="jk-hub-current"><span class="jk-hub-index">'+String(index+1).padStart(2,"0")+' / '+items.length+'</span><strong></strong></div><div class="jk-hub-tools"><select class="jk-hub-navselect" aria-label="跳转到其他项目"></select><a class="jk-hub-btn jk-hub-prev" title="上一个项目">←</a><a class="jk-hub-btn jk-hub-next" title="下一个项目">→</a><a class="jk-hub-btn jk-hub-btn--all" href="../index.html#work" aria-label="返回全部作品">全部项目</a></div></div>';
+bar.innerHTML='<div class="jk-hub-inner"><a class="jk-hub-brand" href="../index.html#work" aria-label="返回 JK 作品集首页"><b>JK.</b><span>INTERACTIVE WORK</span></a><div class="jk-hub-current"><span class="jk-hub-index">'+String(index+1).padStart(2,"0")+' / '+items.length+'</span><strong></strong></div><div class="jk-hub-tools"><select class="jk-hub-navselect" aria-label="跳转到其他项目"></select><a class="jk-hub-btn jk-hub-prev" title="上一个项目">←</a><a class="jk-hub-btn jk-hub-next" title="下一个项目">→</a><a class="jk-hub-btn jk-hub-evidence" href="../evidence.html#projects" aria-label="查看19个项目的数据与成果证据">证据</a><a class="jk-hub-btn jk-hub-btn--all" href="../index.html#work" aria-label="返回全部作品">全部项目</a></div></div>';
 bar.querySelector(".jk-hub-current strong").textContent=entry[1]+" · "+entry[2];
 const select=bar.querySelector("select");for(const [k,name,cn]of items){const option=document.createElement("option");option.value=k;option.textContent=name+" / "+cn;option.selected=k===page;select.appendChild(option)}
 select.addEventListener("change",()=>{const name=select.value;if(items.some(i=>i[0]===name))location.assign(name+".html")});
 bar.querySelector(".jk-hub-prev").href=prior[0]+".html";bar.querySelector(".jk-hub-prev").setAttribute("aria-label","上一个项目："+prior[2]);
 bar.querySelector(".jk-hub-next").href=next[0]+".html";bar.querySelector(".jk-hub-next").setAttribute("aria-label","下一个项目："+next[2]);
+const link=bar.querySelector(".jk-hub-evidence");const evid={housing:"housing",csv:"github",gpu:"gpu",monitor:"monitor"};
+if(evid[page])link.href="../evidence.html#"+evid[page];
+if(page==="freelance")link.href="freelance.html#records";
 document.body.insertBefore(bar,document.body.firstChild);
 
 })();
